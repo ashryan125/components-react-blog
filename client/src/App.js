@@ -39,7 +39,7 @@ function App() {
             <div>
                 <Router>
                     <Header />
-                    <Switch>
+                    {/* <Switch>
                         <Route exact path="/">
                             <Home />
                         </Route>
@@ -55,9 +55,9 @@ function App() {
                         <Route path="/post">
                             <Post />
                         </Route>
-                    </Switch>
+                    </Switch> */}
                 </Router>
-                <Footer />
+                {/* <Footer /> */}
             </div >
         </ApolloProvider>
     )

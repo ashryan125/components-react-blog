@@ -10,9 +10,8 @@ function Header() {
     // };
     return (
         <header className="bg-dark fixed-top">
-            <section className="d-flex justify-content-space-around border-top">
+            <section className="justify-content-space-around border-top">
                 <Link to="/"><h1> Components </h1></Link>
-
                 <Navbar bg="light" expand="lg">
                     <Container>
                             <Nav className="me-auto">
