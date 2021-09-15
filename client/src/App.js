@@ -5,6 +5,7 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
+import { setContext } from '@apollo/client/link/context';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
@@ -34,7 +35,7 @@ const client = new ApolloClient({
 
 function App() {
     return (
-        <ApolloProvider>
+        <ApolloProvider client={client}>
             <div>
                 <Router>
                     <Header />

@@ -38,17 +38,13 @@ export const ADD_FRIEND = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+export const ADD_POST = gql`
+  mutation addPost($thoughtText: String!) {
+    addPost(thoughtText: $thoughtText) {
       _id
       thoughtText
       createdAt
       username
-      reactionCount
-      reactions {
-        _id
-      }
     }
   }
 `;
