@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import Auth from '../../utils/auth';
+// import Auth from '../../utils/auth';
 
 function Header() {
     // function signout(event) {
