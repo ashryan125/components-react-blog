@@ -2,47 +2,48 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import Auth from '../../utils/auth';
+import './style.css';
 
 
 function Header() {
-    // function signout(event) {
-    //     event.preventDefault();
-    //     Auth.signout();
-    // };
-
     return (
-        <header className="bg-dark fixed-top">
-            <Navbar bg='dark' variant='dark' expand='lg'>
-                <Container fluid>
-                    <Navbar.Brand as={Link} to='/'>
-                        Components
-                    </Navbar.Brand>
+        <Navbar bg='dark' variant='dark' expand='lg'>
+            <Container fluid>
+                <Navbar.Brand as={Link} to='/'>
+                    Components
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbar" />
+                <Navbar.Collapse id="navbar">
                     <Nav className="ml-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
                         {Auth.loggedIn() ? (
                             <>
-                                <Nav.Link as={Link} to='/saved'>
-                                    See Your Books
-                                </Nav.Link>
-                                <Nav.Link onClick={Auth.signout}>Signout</Nav.Link>
+                                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                                    <Nav.Link as={Link} to='/home'> Home </Nav.Link>
+                                    <Nav.Link as={Link} to='/my-profile'>
+                                        My profile
+                                    </Nav.Link>
+                                    <Nav.Link as={Link} to='/new-post'>
+                                        Create a new post
+                                    </Nav.Link>
+                                    <Nav.Link onClick={Auth.signout}>Signout</Nav.Link>
+                                </NavDropdown>
                             </>
                         ) : (
-                            <Nav.Link onClick={Auth.login}>Login</Nav.Link>,
-                            <Nav.Link onClick={Auth.signup}>Sign Up</Nav.Link>
+                            <>
+                                <Nav.Link as={Link} to='/home'> Home </Nav.Link>
+                                <Nav.Link as={Link} to='/login'>
+                                    Login
+                                </Nav.Link>
+                                <Nav.Link as={Link} to='/signup'>
+                                    Signup
+                                </Nav.Link>
+                            </>
                         )}
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#my-profile">My profile</NavDropdown.Item>
-                            <NavDropdown.Item href="#new-post">Create a new post</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#signout">signout</NavDropdown.Item>
-                        </NavDropdown>
                     </Nav>
-                </Container>
-            </Navbar>
-        </header>
-    )
-
-    
-}
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
+};
 
 export default Header;
