@@ -16,9 +16,11 @@ import Post from './pages/Post';
 function App() {
     return (
         <div>
+            <Login/>
+            <Signup/>
             <Router>
                 <Header />
-                <Switch>
+                {/* <Switch>
                     <Route exact path="/">
                         <Home />
                     </Route>
@@ -34,7 +36,7 @@ function App() {
                     <Route path="/post">
                         <Post />
                     </Route>
-                </Switch>
+                </Switch> */}
             </Router>
             <Footer />
         </div>
