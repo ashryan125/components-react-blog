@@ -1,5 +1,6 @@
-import React from 'react'
-import "../components/stylesheets/signup.css"
+import React from 'react';
+import "../components/stylesheets/signup.css";
+
 function Signup() {
   return (
     <div>
@@ -34,7 +35,6 @@ function Signup() {
         </div>
       </div>
     </div>
-
   )
 }
-export default Signup
+export default Signup;

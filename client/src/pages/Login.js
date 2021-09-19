@@ -1,5 +1,7 @@
-import React from 'react'
-import "../components/stylesheets/login.css"
+import React from 'react';
+import "../components/stylesheets/login.css";
+
+
 function Login() {
   return (
     <div>
@@ -19,4 +21,4 @@ function Login() {
     </div>
   )
 }
-export default Login
+export default Login;
