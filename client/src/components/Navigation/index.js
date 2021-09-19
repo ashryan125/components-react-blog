@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 import './style.css';
 
 
-function Header() {
+function Navigation() {
     return (
         <Navbar bg='dark' variant='dark' expand='lg'>
             <Container fluid>
@@ -46,4 +46,4 @@ function Header() {
     );
 };
 
-export default Header;
+export default Navigation; 

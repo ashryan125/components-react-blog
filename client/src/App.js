@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import {
     HashRouter as Router,
@@ -6,7 +7,7 @@ import {
     Route,
 } from "react-router-dom";
 import { setContext } from '@apollo/client/link/context';
-import Header from './components/Header';
+import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -37,11 +38,11 @@ function App() {
     return (
         <div>
             <Router>
-                <Header />
+                <Navigation />
                 <Switch>
-                    {/* <Route exact path="/">
+                    <Route exact path="/">
                         <Home />
-                    </Route> */}
+                    </Route>
                     <Route path="/login">
                         <Login />
                     </Route>
