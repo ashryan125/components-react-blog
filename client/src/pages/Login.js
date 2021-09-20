@@ -5,20 +5,30 @@ import "../components/stylesheets/login.css";
 function Login() {
   return (
     <div>
-      <form class="login-form">
-        <div>
-          <label for="email-login">Email:</label>
-          <input type="text" id="email-login" class="text-color" />
+      <main className='flex-row justify-center mb-4'>
+        <div className='card'>
+          <h4 className='card-header'>Login</h4>
+          <div className='card-body'>
+            <form className="login-form">
+              <div>
+                <label for="email-login">Email: </label>
+                <input type="text" id="email-login" class="text-color" />
+              </div>
+              <div>
+                <label for="password-login">Password: </label>
+                <input type="password" id="password-login" class="password" />
+              </div>
+              <div>
+                <button className='btn w-30' type='submit'>
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          <label for="password-login">Password:</label>
-          <input type="password" id="password-login" class="password" />
-        </div>
-        <div>
-          <button class="waves-effect red lighten-2 btn" type="submit">Login</button>
-        </div>
-      </form>
-    </div>
-  )
-}
+      </main >
+    </div >
+  );
+};
+
 export default Login;
