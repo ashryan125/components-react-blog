@@ -61,6 +61,15 @@ form {
   display: inline;
 }
 
+.btn[disabled] {
+  cursor: default;
+  opacity: .8;
+}
+
+.btn-inline {
+  display: inline;
+}
+
 .followingbutton{
   margin-left: 150px;
  margin-bottom: 20px;
