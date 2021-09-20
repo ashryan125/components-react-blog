@@ -4,6 +4,7 @@ function Login (){
     return(
         <div>
               <form class="login-form">
+                <h2>Login</h2>
       <div>
         <label for="email-login">Email:</label>
         <input type="text" id="email-login" class="text-color"/>
