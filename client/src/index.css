@@ -60,3 +60,20 @@ form {
 .btn-inline {
   display: inline;
 }
+
+.followingbutton{
+  margin-left: 150px;
+ margin-bottom: 20px;
+}
+
+.followingbutton1{
+ margin-left: 150px;
+ margin-top: -600px;
+
+}
+
+.followingform{
+  margin-left: 600px;
+  border:solid black 2px;
+  width: 20vw;
+}
