@@ -1,45 +1,42 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { QUERY_THOUGHT } from "../utils/queries";
-import ReactionList from "../components/ReactionList";
-import ReactionForm from "../components/ReactionForm";
-import Auth from "../utils/auth";
+import React from 'react';
+import Auth from '../utils/auth';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_POST } from '../utils/queries';
+import CommentList from '../components/CommentList';
+import CommentForm from '../components/CommentForm';
 
-const SinglePost = (props) => {
-  const { id: thoughtId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_THOUGHT, {
-    variables: { id: thoughtId },
-  });
+function SinglePost() {
+    const { id: postId } = useParams();
 
-  const thought = data?.thought || {};
+    const { loading, data } = useQuery(QUERY_POST, {
+        variables: { id: postId }
+    });
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    const post = data?.post || {};
 
-  return (
-    <div>
-      <div>
-        <p>
-          <span style={{ fontWeight: 700 }}>
-            {thought.username}
-          </span>{" "}
-          thought on {thought.createdAt}
-        </p>
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return (
         <div>
-          <p>{thought.thoughtText}</p>
+            <div className="card mb-3">
+                <p className="card-header">
+                    <span style={{ fontWeight: 700 }} className="text-light">
+                        {post.username}
+                    </span>{' '}
+                    post on {post.createdAt}
+                </p>
+                <div className="card-body">
+                    <p>{post.postText}</p>
+                </div>
+            </div>
+            {post.CommentCount > 0 && <CommentList comments={post.comments} />}
+            {Auth.loggedIn() && <CommentForm postId={post._id} />}
         </div>
-      </div>
-
-      {thought.reactionCount > 0 && (
-        <ReactionList reactions={thought.reactions} />
-      )}
-
-      {Auth.loggedIn() && <ReactionForm thoughtId={thought._id} />}
-    </div>
-  );
-};
+    )
+}
 
 export default SinglePost;
