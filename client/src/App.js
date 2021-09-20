@@ -13,8 +13,8 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
-// import Profile from './pages/Profile';
-// import SinglePost from './pages/Singlepost';
+import Profile from './pages/Profile';
+import SinglePost from './pages/Singlepost';
 
 // const httpLink = createHttpLink({
 //     uri: '/graphql',
@@ -39,34 +39,34 @@ function App() {
     return (
         <div>
             {/* <ApolloProvider client={client}> */}
-                <Router>
-                    <Navigation />
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route path="/home">
-                            <Home />
-                        </Route>
-                        <Route path="/login">
-                            <Login />
-                        </Route>
-                        <Route path="/signup">
-                            <Signup />
-                        </Route>
-                        {/* <Route path="/profile">
+            <Router>
+                <Navigation />
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/home">
+                        <Home />
+                    </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/signup">
+                        <Signup />
+                    </Route>
+                    <Route path="/profile">
                         <Profile />
-                    </Route> */}
-                        {/* <Route path="/post">
-                        <Post />
-                    </Route> */}
-                    </Switch>
-                    <div>
-                        <Footer />
-                    </div>
-                </Router>
-            {/* </ApolloProvider> */}
-        </div>
+                    </Route>
+                    <Route path="/single-post">
+                        <SinglePost />
+                    </Route>
+                </Switch>
+                <div>
+                    <Footer />
+                </div>
+            </Router>
+        {/* </ApolloProvider> */}
+        </div >
     )
 }
 

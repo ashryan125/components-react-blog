@@ -6,7 +6,7 @@ function PostForm() {
     return (
         <Form>
             <Form.Control size="lg" type="text" placeholder="Put your status here..." />
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="btn">
                 Submit
             </Button>
         </Form>

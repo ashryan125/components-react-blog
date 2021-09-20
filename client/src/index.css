@@ -15,7 +15,7 @@ body {
   font-size: 18px;
   letter-spacing: .1em;
   background-color: black;
-  font-family: 'Poiret One', cursive;
+  font-family: 'Inconsolata', monospace;
   color: white;
 }
 
@@ -25,7 +25,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
@@ -36,23 +36,27 @@ form {
   width: 60%;
 }
 
-button {
-	background: darkred;
-	border: 0;
+.btn {
 	border-radius: 5px;
-	color: #fff;
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: 600;
-	margin-bottom: 30px;
+	margin: 5px 0;
 	padding: 10px 15px;	
+  border: 1px solid black;
 }
 
-button:hover {
+.btn:hover {
   opacity: .8;
+  background-color: blue;
+  color: white;
 }
 
-button[disabled] {
+.btn[disabled] {
   cursor: default;
   opacity: .8;
+}
+
+.btn-inline {
+  display: inline;
 }
