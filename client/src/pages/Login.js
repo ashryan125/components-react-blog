@@ -1,23 +1,76 @@
-import React from 'react'
-import "../components/stylesheets/login.css"
-function Login (){
-    return(
-        <div>
-              <form class="login-form">
-                <h2>Login</h2>
-      <div>
-        <label for="email-login">Email:</label>
-        <input type="text" id="email-login" class="text-color"/>
-      </div>
-      <div>
-        <label for="password-login">Password:</label>
-        <input type="password" id="password-login" class="password" />
-      </div>
-      <div>
-        <button class="waves-effect red lighten-2 btn" type="submit">Login</button>
-      </div>
-    </form>
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import "../components/stylesheets/login.css";
+
+
+function Login() {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await login({
+        variables: { ...formState }
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
+
+  return (
+    <div>
+      <main className='flex-row justify-center mb-4'>
+        <div className='col-12 col-md-6'>
+          <div className='card'>
+            <h4 className='card-header'>Login</h4>
+            <div className='card-body'>
+              <form onSubmit={handleFormSubmit} className="login-form">
+                <div>
+                  <label for="email-login">Email: </label>
+                  <input type="text" id="email-login" class="text-color" value={formState.email}
+                onChange={handleChange}/>
+                </div>
+                <div>
+                  <label for="password-login">Password: </label>
+                  <input type="password" id="password-login" class="password" value={formState.password}
+                onChange={handleChange} />
+                </div>
+                <div>
+                  <button className='btn w-30' type='submit'>
+                    Submit
+                  </button>
+                </div>
+              </form>
+              {error && <div>Login failed</div>}
+            </div>
+          </div>
         </div>
-    )
-}
-export default Login
+      </main >
+    </div >
+  );
+};
+
+export default Login;
