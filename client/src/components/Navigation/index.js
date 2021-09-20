@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import Auth from '../../utils/auth';
-// import { GiHamburgerMenu } from 'react-icons/gi'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import './style.css';
 
 
@@ -18,17 +18,17 @@ function Navigation() {
                     <Nav className="me-auto">
                         {/* {Auth.loggedIn() ? ( */}
                         <>
-                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                {/* <GiHamburgerMenu style={{ fontSize: '40px' }} /> */}
-                                <Nav.Link as={Link} to='/home'> Home </Nav.Link>
-                                <Nav.Link as={Link} to='/profile'>
-                                    My profile
-                                </Nav.Link>
-                                <Nav.Link as={Link} to='/new-post'>
-                                    Create a new post
-                                </Nav.Link>
-                                <Nav.Link onClick={Auth.signout}>Signout</Nav.Link>
-                            </NavDropdown>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="secondary" id="dropdown-button-dark">
+                                    <GiHamburgerMenu style={{ fontSize: '25px' }} />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/home">Home</Dropdown.Item>
+                                    <Dropdown.Item href="#/profile">My Profile</Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item onClick={Auth.signout}>Signout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </>
                     </Nav>
                     ) : (
