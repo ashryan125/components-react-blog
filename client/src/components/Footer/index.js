@@ -1,11 +1,11 @@
 import React from 'react';
 import "./style.css";
-function footer() {
+function Footer() {
     return (
-        <div class="footer">
+        <div className="footer">
             <p>Thanks for visiting this page!</p>
         </div>
     )
 }
 
-export default footer;
+export default Footer;
