@@ -1,13 +1,144 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+main {
+	margin: 0 auto;
+	max-width: 90%;
+  padding: 50px 30px;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+  padding: 0;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 18px;
+  letter-spacing: .1em;
+  background-color: black;
+  font-family: 'Rajdhani', sans-serif;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  margin: 5px 0;
+  line-height: 1.25;
+  color: var(--light);
+}
+
+.logo {
+  font-family: 'Megrim', cursive;
+  font-size: 4rem;
+}
+
+.title-fonts {
+  font-family: 'Megrim', cursive;
+}
+
+.backgroundColor,
+html {
+  background-color: #cacaca;
+  height: 100%;
+}
+
+/* FORM STYLES */
+form {
+  width: 60%;
+}
+
+.form-style {
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.form-label {
+  margin-left: -12px;
+}
+
+.submit-btn {
+  width: 50%;
+}
+
+
+.btn {
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	margin: 5px 0;
+	padding: 10px 15px;	
+  border: 1px solid black;
+}
+
+.btn:hover {
+  opacity: .8;
+  background-color: blue;
+  color: white;
+}
+
+.btn[disabled] {
+  cursor: default;
+  opacity: .8;
+}
+
+.btn-inline {
+  display: inline;
+}
+
+.btn[disabled] {
+  cursor: default;
+  opacity: .8;
+}
+
+.btn-inline {
+  display: inline;
+}
+
+.followingbutton{
+  margin-left: 150px;
+ margin-bottom: 20px;
+}
+
+.followingbutton1{
+ margin-left: 150px;
+ margin-top: -600px;
+
+}
+
+.followingform{
+  margin-left: 600px;
+  border:solid black 2px;
+  width: 20vw;
+}
+
+.footer-style {
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.navlinks {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: white !important;
+}
+
+/* PROFILE STYLES */
+.profile-title {
+  font-family: 'Megrim', cursive;
+  font-size: 36px;
+  margin-left: 10px;
+}
+
+.post-form-style {
+  width: 100%;
 }

@@ -91,6 +91,7 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+
         following: async (parent, { userId }, context) => {
             if (context.user) {
                 const currentUser = await User.findOneAndUpdate(
@@ -104,6 +105,7 @@ const resolvers = {
                     { $addToSet: { following: followId } },
                     { new: true }
                 ).populate('following');
+
 
                 return updatedUser;
             }
