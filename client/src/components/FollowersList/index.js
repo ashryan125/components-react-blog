@@ -1,24 +1,32 @@
 import React from "react";
 
+const divStyle = {
+    marginBottom:'50px'
+}
+
 function FollowersList(){
     return(
         <div className="followingform">
         <h2>
-        Following
+            Followers
         </h2>
-        <h5>John Doe</h5>
-        <button className='followingbutton1' > Following</button>
-        <br/>
-        <h5>John Doe</h5>
-        <button className='followingbutton' >Following</button>
-        <br/>
-        <h5>John Doe</h5>
-        <button className='followingbutton' >Following</button>
-        <br/>
-        <h5>John Doe</h5>
-        <button className='followingbutton' >Following</button>
-        <br/>
+        <div style={divStyle} >
+            <h5 className="username">John Doe</h5>
+            <button className='followingbutton1' > Remove</button>
         </div>
+        <div className='followerbox1' >
+            <h5 className='username'>John Doe</h5>
+            <button className='followingbutton1' >Remove</button>
+        </div >
+        <div className='followerbox2' >
+            <h5 className="username">John Doe</h5>
+            <button className='followingbutton1' >Remove</button>
+        </div>
+        <div className='followerbox3' >
+            <h5 className="username">John Doe</h5>
+            <button className='followingbutton1' >Remove</button>
+        </div >
+    </div>
     )
 }
 
