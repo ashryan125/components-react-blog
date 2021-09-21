@@ -5,11 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "seed": "node seeders/seeds.js"
   },
   "dependencies": {
     "apollo-server-express": "^2.25.2",
     "express": "^4.17.1",
+    "faker": "^5.5.3",
     "graphql": "^15.5.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5"
