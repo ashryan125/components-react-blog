@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { Form, Col, Row, Button } from "react-bootstrap";
+import { Form, Row, Button } from "react-bootstrap";
 import "../components/stylesheets/login.css";
 
 function Login() {
@@ -42,14 +42,14 @@ function Login() {
 
   return (
     <div className="backgroundColor">
-      <main className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center">
         <div className="col-12 col-md-6">
-          <div className="card">
+          <div className="card mt-5">
             <h4 className="card-header bg-dark text-white title-fonts">
               LOGIN
             </h4>
             <div className="card-body bg-secondary">
-              <Form onSubmit={handleFormSubmit} className="form-style">
+              <Form onSubmit={handleFormSubmit} className="form-style" id='login-form'>
                 <Form.Group
                   as={Row}
                   className="mb-3"
@@ -79,7 +79,7 @@ function Login() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

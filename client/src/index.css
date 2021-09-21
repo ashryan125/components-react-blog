@@ -44,8 +44,10 @@ h6 {
   font-family: 'Megrim', cursive;
 }
 
-.backgroundColor {
+.backgroundColor,
+html {
   background-color: #cacaca;
+  height: 100%;
 }
 
 /* FORM STYLES */
