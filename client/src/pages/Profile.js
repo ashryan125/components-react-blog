@@ -81,7 +81,7 @@ function Profile() {
                 </div>
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default Profile;

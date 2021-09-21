@@ -40,7 +40,7 @@ function Home() {
                 ) : null} */}
             </div>
         </main >
-    )
-}
+    );
+};
 
 export default Home;
