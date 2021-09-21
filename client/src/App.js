@@ -14,7 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import FollowersList from './components/FollowersList';
+
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -35,10 +35,10 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
+
 function App() {
     return (
-        <div>
-            <FollowersList/>
+        <div className='backgroundColor'>
             <ApolloProvider client={client}>
             <Router>
                 <Navigation />
@@ -69,4 +69,3 @@ function App() {
 }
 
 export default App;
-

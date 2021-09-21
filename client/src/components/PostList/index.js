@@ -7,7 +7,7 @@ function PostList({ posts, title }) {
   // }
 
   return (
-    <div>
+    <div className='container-xxl'>
       <div className='card'>
         <h4>{title}</h4>
         <div className='card-body'>
