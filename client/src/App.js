@@ -37,7 +37,7 @@ const client = new ApolloClient({
 
 function App() {
     return (
-        <div>
+        <div className='backgroundColor'>
             <ApolloProvider client={client}>
             <Router>
                 <Navigation />

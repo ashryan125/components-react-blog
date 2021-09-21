@@ -131,3 +131,14 @@ form {
   font-size: 18px;
   color: white !important;
 }
+
+/* PROFILE STYLES */
+.profile-title {
+  font-family: 'Megrim', cursive;
+  font-size: 36px;
+  margin-left: 10px;
+}
+
+.post-form-style {
+  width: 100%;
+}
