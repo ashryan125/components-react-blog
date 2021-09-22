@@ -3,13 +3,9 @@ import { Link } from 'react-router-dom';
 
 function PostList({ posts }) {
 
-  if(!posts.length) {
-    return <h3>No Posts Yet</h3>
-  }
-
-  if(!posts.length) {
-    return <h3>No Posts Yet</h3>
-  }
+  // if(!posts.length) {
+  //   return <h3>No Posts Yet</h3>
+  // }
 
   return (
       <div className='card mt-5'>
@@ -31,7 +27,7 @@ function PostList({ posts }) {
                 <div className="card-body">
                   <Link to={`/post/${post._id}`}>
                   <h4 className="card-header bg-dark text-white title-fonts">{post.postTitle}</h4>
-                    <p>{post.postBody}</p>
+                    <p>{post.postText}</p>
                     <p className="mb-0">
                       Comments: {post.commentCount} || Click to{' '}
                       {post.commentCount ? 'see' : 'start'} the discussion!

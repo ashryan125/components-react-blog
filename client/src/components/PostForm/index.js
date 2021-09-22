@@ -9,7 +9,7 @@ function PostForm() {
   // const [postText, setText] = useState('');
   const [formState, setFormState] = useState({
     title: '',
-    body: ''
+    text: ''
   });
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -68,23 +68,16 @@ function PostForm() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/280
-        {error && <span className="ml-2">Something went wrong...</span>}
-      </p>
+      
       <Form id='create-post'
-=======
-      <Form id='create-port'
->>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
         onSubmit={handleFormSubmit}
         className='form-style post-form-style'
       >
+
         <div className="card mt-5">
           <h4 className="card-header bg-dark text-white title-fonts">
             Create a New Post
           </h4>
-<<<<<<< HEAD
           <div className="card-body bg-secondary">
           <Form.Group
               as={Row}
@@ -92,14 +85,13 @@ function PostForm() {
             >
               <Form.Control placeholder="Title of Post"
                 className='post-form-style'
+                name='title'
                 type='title'
                 id='title'
                 value={formState.title}
                 onChange={handleChange}
               />
             </Form.Group>
-=======
->>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
 
           <div className="card-body bg-secondary">
             <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
@@ -112,9 +104,10 @@ function PostForm() {
             >
               <Form.Control as='textarea' rows={3} placeholder="Put your post here..."
                 className='post-form-style'
-                type='body'
-                id='body'
-                value={formState.body}
+                type='text'
+                id='text'
+                name='text'
+                value={formState.text}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -123,6 +116,7 @@ function PostForm() {
               <Button variant="dark" className='submit-btn' type='submit'>Submit</Button>
             </Form.Group>
             {error && <div>Post failed</div>}
+          </div>
           </div>
         </div>
       </Form>

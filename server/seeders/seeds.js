@@ -26,12 +26,12 @@ db.once('open', async () => {
     let createdPosts = [];
     for (let i = 0; i < 100; i += 1) {
       const postTitle = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-      const postBody = faker.lorem.words(Math.round(Math.random() * 100) + 1);
+      const postText = faker.lorem.words(Math.round(Math.random() * 100) + 1);
   
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       const { username, _id: userId } = createdUsers.ops[randomUserIndex];
   
-      const createdPost = await Post.create({ postTitle, postBody, username });
+      const createdPost = await Post.create({ postTitle, postText, username });
   
       const updatedUser = await User.updateOne(
         { _id: userId },
