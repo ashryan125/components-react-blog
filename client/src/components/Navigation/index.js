@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import Auth from '../../utils/auth';
-import { GiHamburgerMenu } from 'react-icons/gi'
-import './style.css';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 
 function Navigation() {
