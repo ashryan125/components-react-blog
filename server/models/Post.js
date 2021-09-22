@@ -10,11 +10,11 @@ const postSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
-    thoughtBody: {
+    postBody: {
       type: String,
       required: 'Post needs text',
       minlength: 1,
-      maxlength: 280
+      maxlength: 1000
     },
     createdAt: {
       type: Date,

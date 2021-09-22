@@ -15,10 +15,8 @@ db.once('open', async () => {
       const username = faker.internet.userName();
       const email = faker.internet.email(username);
       const password = faker.internet.password();
-      const firstName = faker.internet.firstName();
-      const lastName = faker.internet.lastName();
-  
-      userData.push({ username, email, password, firstName, lastName });
+
+      userData.push({ username, email, password });
     }
     console.log('users seeded');
 
@@ -62,12 +60,13 @@ db.once('open', async () => {
     // create Posts
     let createdPosts = [];
     for (let i = 0; i < 100; i += 1) {
-      const postText = faker.lorem.words(Math.round(Math.random() * 500) + 1);
+      const postTitle = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+      const postBody = faker.lorem.words(Math.round(Math.random() * 100) + 1);
   
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       const { username, _id: userId } = createdUsers.ops[randomUserIndex];
   
-      const createdPost = await Post.create({ postText, username });
+      const createdPost = await Post.create({ postTitle, postBody, username });
   
       const updatedUser = await User.updateOne(
         { _id: userId },
@@ -81,7 +80,7 @@ db.once('open', async () => {
   
     // create comments
     for (let i = 0; i < 100; i += 1) {
-      const commentBody = faker.lorem.words(Math.round(Math.random() * 50) + 1);
+      const commentBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
   
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       const { username } = createdUsers.ops[randomUserIndex];
