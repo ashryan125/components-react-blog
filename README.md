@@ -6,11 +6,10 @@ A react blog site that allows users to create react component snippets that othe
 ---
 
 ## Deployed Site
-[Components](#)
+[Components](https://component-react.herokuapp.com/)
 
 ---
 
----
 
 ## Table of Contents
 
@@ -76,7 +75,7 @@ Have a high-quality README (with unique name, description, technologies used, sc
 ---
 ## Screenshots
 ### Home Page View
-![Homepage](#)
+![Homepage](./client/public/Screen_Shot_2021-09-22_at_5.11.32_PM.png)
 
 ---
 ## Contact
@@ -84,3 +83,4 @@ Have a high-quality README (with unique name, description, technologies used, sc
 - [Reuben Genkin](https://github.com/ReubenGenkin)
 - [Sonika Poudyal](https://github.com/sonipoud)
 - [Rohan Nair](https://github.com/rohannj1993)
+

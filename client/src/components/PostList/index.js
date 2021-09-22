@@ -9,26 +9,29 @@ function PostList({ posts }) {
 
   return (
       <div className='card mt-5'>
-        {/* <h4 className="card-header bg-dark text-white title-fonts">{title}</h4> */}
         <div className='card-body bg-secondary'>
           {posts &&
-            posts.map(post => (
+            posts.slice(0, 5).map(post => (
+            
               <div key={post._id} className="card mb-3">
                 <p className="card-header">
                   <Link
                     to={`/profile/${post.username}`}
-                    style={{ fontWeight: 700 }}
-                    className="text-light"
+                    style={{ fontWeight: 700, textDecoration: 'none' }}
+                  
+                    className="text-dark post"
                   >
                     {post.username}
                   </Link>{' '}
-                  post on {post.createdAt}
+                  posted on {post.createdAt}
                 </p>
                 <div className="card-body">
-                  <Link to={`/post/${post._id}`}>
-                  <h4 className="card-header bg-dark text-white title-fonts">{post.postTitle}</h4>
-                    <p>{post.postText}</p>
-                    <p className="mb-0">
+
+                  <Link to={`/post/${post._id}`}  style={{ textDecoration: 'none' }}>
+                  <h4 className="card-header text-dark post">{post.postTitle}</h4>
+                    <p className='text-dark post-text'>{post.postText}</p>
+                    <p className="mb-0 post text-dark">
+
                       Comments: {post.commentCount} || Click to{' '}
                       {post.commentCount ? 'see' : 'start'} the discussion!
                     </p>
