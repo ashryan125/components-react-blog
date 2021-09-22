@@ -91,13 +91,21 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        following: async (parent, { friendId }, context) => {
+
+        following: async (parent, { userId }, context) => {
             if (context.user) {
                 const currentUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
                     { new: true }
                 ).populate('following');
+
+                const currentUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { following: followId } },
+                    { new: true }
+                ).populate('following');
+
 
                 return updatedUser;
             }
