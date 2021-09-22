@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import Auth from '../../utils/auth';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { IoPersonCircle } from 'react-icons/io5';
 
 
 function Navigation() {
@@ -13,14 +13,17 @@ function Navigation() {
                     <h1 className='logo'>Components</h1>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
+                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                     
                         {Auth.loggedIn() ? (
                             <>
                             <Nav className="justify-content-end">
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-button-dark">
-                                        <GiHamburgerMenu style={{ fontSize: '25px' }} />
+                                    <Dropdown.Toggle
+                                    // variant="secondary"
+                                    style={{ backgroundColor: 'transparent', border: '0 solid transparent' }} 
+                                    id="dropdown-button-dark">
+                                        <IoPersonCircle style={{ fontSize: '48px', backgroundColor: 'transparent' }} />
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#/home">Home</Dropdown.Item>

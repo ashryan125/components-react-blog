@@ -161,3 +161,7 @@ form {
   margin:auto;
   float:left
 }
+
+.post-text {
+  margin-top: 12px;
+}
