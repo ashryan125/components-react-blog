@@ -21,7 +21,7 @@ function Login() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log('login button clicked!');
     try {
       const { data } = await login({
         variables: { ...formState },
@@ -52,9 +52,8 @@ function Login() {
                 <Form.Group
                   as={Row}
                   className="mb-3"
-                  controlId="formPlaintextEmail"
                 >
-                  <Form.Label column-lg>Email</Form.Label>
+                  <Form.Label>Email</Form.Label>
 
                   <Form.Control
                     className="form-style"
@@ -69,9 +68,8 @@ function Login() {
                 <Form.Group
                   as={Row}
                   className="mb-3"
-                  controlId="formPlaintextPassword"
                 >
-                  <Form.Label column-lg>Password</Form.Label>
+                  <Form.Label>Password</Form.Label>
 
                   <Form.Control 
                   className="form-style"
@@ -84,7 +82,7 @@ function Login() {
                 </Form.Group>
 
                 <Form.Group className="text-center">
-                  <Button variant="dark" className='submit-btn'>Submit</Button>
+                  <Button variant="dark" className='submit-btn' type='submit'>Submit</Button>
                 </Form.Group>
               </Form>
 
