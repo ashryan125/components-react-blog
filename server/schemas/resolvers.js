@@ -100,13 +100,6 @@ const resolvers = {
                     { new: true }
                 ).populate('following');
 
-                const currentUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { following: followId } },
-                    { new: true }
-                ).populate('following');
-
-
                 return updatedUser;
             }
 
