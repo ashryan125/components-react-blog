@@ -1,11 +1,11 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-// const { Thought, User } = require('../models');
+const { Post, User } = require('../models');
 
 db.once('open', async () => {
     
-    await Thought.deleteMany({});
+    await Post.deleteMany({});
     await User.deleteMany({});
   
     // create user data
@@ -15,62 +15,89 @@ db.once('open', async () => {
       const username = faker.internet.userName();
       const email = faker.internet.email(username);
       const password = faker.internet.password();
+      const firstName = faker.internet.firstName();
+      const lastName = faker.internet.lastName();
   
-      userData.push({ username, email, password });
+      userData.push({ username, email, password, firstName, lastName });
     }
-  
+    console.log('users seeded');
+
     const createdUsers = await User.collection.insertMany(userData);
   
-    // create friends
+    // UPDATED FOR FOLLOWERS!!!
+    // create followers
     for (let i = 0; i < 100; i += 1) {
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       const { _id: userId } = createdUsers.ops[randomUserIndex];
   
-      let friendId = userId;
+      let followerId = userId;
   
-      while (friendId === userId) {
+      while (followerId === userId) {
         const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-        friendId = createdUsers.ops[randomUserIndex];
+        followerId = createdUsers.ops[randomUserIndex];
       }
   
-      await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
+      await User.updateOne({ _id: userId }, { $addToSet: { followers: followerId } });
     }
+
+    console.log('followers seeded')
+
+       // create following
+       for (let i = 0; i < 100; i += 1) {
+        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+        const { _id: userId } = createdUsers.ops[randomUserIndex];
+    
+        let followingId = userId;
+    
+        while (followingId === userId) {
+          const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+          followingId = createdUsers.ops[randomUserIndex];
+        }
+    
+        await User.updateOne({ _id: userId }, { $addToSet: { following: followingId } });
+      }
   
-    // create thoughts
-    let createdThoughts = [];
+      console.log('following seeded')
+  
+    // create Posts
+    let createdPosts = [];
     for (let i = 0; i < 100; i += 1) {
-      const thoughtText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+      const postText = faker.lorem.words(Math.round(Math.random() * 500) + 1);
   
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       const { username, _id: userId } = createdUsers.ops[randomUserIndex];
   
-      const createdThought = await Thought.create({ thoughtText, username });
+      const createdPost = await Post.create({ postText, username });
   
       const updatedUser = await User.updateOne(
         { _id: userId },
-        { $push: { thoughts: createdThought._id } }
+        { $push: { Posts: createdPost._id } }
       );
   
-      createdThoughts.push(createdThought);
+      createdPosts.push(createdPost);
     }
+
+    console.log('posts seeded');
   
-    // create reactions
+    // create comments
     for (let i = 0; i < 100; i += 1) {
-      const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+      const commentBody = faker.lorem.words(Math.round(Math.random() * 50) + 1);
   
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
       const { username } = createdUsers.ops[randomUserIndex];
   
-      const randomThoughtIndex = Math.floor(Math.random() * createdThoughts.length);
-      const { _id: thoughtId } = createdThoughts[randomThoughtIndex];
+      const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
+      const { _id: PostId } = createdPosts[randomPostIndex];
   
-      await Thought.updateOne(
-        { _id: thoughtId },
-        { $push: { reactions: { reactionBody, username } } },
+      await Post.updateOne(
+        { _id: PostId },
+        { $push: { comments: { commentBody, username } } },
         { runValidators: true }
       );
     }
+
+    console.log('comments seeded')
   
-    console.log('all done!');
+    console.log('all seeds done!');
     process.exit(0);
   });
