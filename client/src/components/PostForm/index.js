@@ -68,11 +68,15 @@ function PostForm() {
 
   return (
     <div>
+<<<<<<< HEAD
       <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
         Character Count: {characterCount}/280
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <Form id='create-post'
+=======
+      <Form id='create-port'
+>>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
         onSubmit={handleFormSubmit}
         className='form-style post-form-style'
       >
@@ -80,6 +84,7 @@ function PostForm() {
           <h4 className="card-header bg-dark text-white title-fonts">
             Create a New Post
           </h4>
+<<<<<<< HEAD
           <div className="card-body bg-secondary">
           <Form.Group
               as={Row}
@@ -93,7 +98,14 @@ function PostForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+=======
+>>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
 
+          <div className="card-body bg-secondary">
+            <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
+              Character Count: {characterCount}/280
+              {error && <span className="ml-2">Something went wrong...</span>}
+            </p>
             <Form.Group
               as={Row}
               className="mb-3 post-form-style mx-auto"
@@ -110,7 +122,7 @@ function PostForm() {
             <Form.Group className="text-center">
               <Button variant="dark" className='submit-btn' type='submit'>Submit</Button>
             </Form.Group>
-            {error && <div>Login failed</div>}
+            {error && <div>Post failed</div>}
           </div>
         </div>
       </Form>

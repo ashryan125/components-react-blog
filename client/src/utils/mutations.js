@@ -25,11 +25,10 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postBody: String!) {
-    addPost(postBody: $postBody) {
+  mutation addPost($postText: String!) {
+    addPost(postText: $postText) {
       _id
-      postTitle
-      postBody
+      postText
       createdAt
       username
       commentCount
@@ -56,7 +55,7 @@ export const ADD_COMMENT = gql `
 `;
 
 export const ADD_FOLLOW = gql`
-mutation addFollow($followId: ID!){
+mutation addFollow($id: ID!){
     addFollow(followId: $followId) {
         _id
         username

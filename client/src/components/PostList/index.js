@@ -7,6 +7,10 @@ function PostList({ posts }) {
     return <h3>No Posts Yet</h3>
   }
 
+  if(!posts.length) {
+    return <h3>No Posts Yet</h3>
+  }
+
   return (
       <div className='card mt-5'>
         {/* <h4 className="card-header bg-dark text-white title-fonts">{title}</h4> */}

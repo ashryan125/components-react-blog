@@ -6,16 +6,18 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
- 
+    followersCount: Int
+    followingCount:Int
+    followers: [User]
+    following: [User]
     posts: [Post]
   }
 
   type Post {
     _id: ID
-    postTitle: String
-    postBody: String
-    createdAt: String
+    postText: String
     username: String
+    createdAt: String
     commentCount: Int
     comments: [Comment]
   }
@@ -23,7 +25,7 @@ const typeDefs = gql`
   type Comment {
     _id: ID
     commentBody: String
-    createAt: String
+    createdAt: String
     username: String
   }
 
@@ -44,7 +46,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postBody: String!): Post
+    addPost(postText: String!): Post
     addComment(postId: ID!, commentBody: String!): Post
     addFollow(followId: ID!, username: String!): User
     addFollowing(followingId: ID!,currentUserId: ID!, username: String!): User

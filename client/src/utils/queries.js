@@ -10,8 +10,12 @@ export const QUERY_ME = gql`
       followersCount
       posts {
         _id
+<<<<<<< HEAD
         postTitle
         postBody
+=======
+        postText
+>>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
         createdAt
         commentCount
         comments {
@@ -21,8 +25,8 @@ export const QUERY_ME = gql`
           username
         }
       }
-      follow {
-          _followId
+      followers {
+          _followersId
           username
        }
       following {
@@ -41,18 +45,22 @@ export const QUERY_USER = gql`
       email
       followingCount
       followersCount
-      follow {
-        _followId
+      following {
+        _followingId
         username
       }
       followers {
-        _followerId
+        _followersId
         username
       }
       posts {
         _id
+<<<<<<< HEAD
         postTitle
         postBody
+=======
+        postText
+>>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
         createdAt
         commentCount
       }
@@ -64,8 +72,12 @@ export const QUERY_POSTS = gql`
 query posts($username: String) {
   posts(username: $username) {
       _id
+<<<<<<< HEAD
       postTitle
       postBody
+=======
+      postText
+>>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
       createdAt
       username
       commentCount
@@ -83,8 +95,12 @@ export const QUERY_POST = gql`
   query post($id: ID!) {
     post(_id: $id) {
       _id
+<<<<<<< HEAD
       postTitle
       postBody
+=======
+      postText
+>>>>>>> fcc6cfc5d7b5432f8586731a68b19e20b6beffcc
       createdAt
       username
       commentCount
