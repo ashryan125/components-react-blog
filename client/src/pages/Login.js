@@ -3,7 +3,6 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Form, Row, Button } from "react-bootstrap";
-import "../components/stylesheets/login.css";
 
 function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -53,11 +52,18 @@ function Login() {
                 <Form.Group
                   as={Row}
                   className="mb-3"
-                  controlId="formPlaintextPassword"
+                  controlId="formPlaintextEmail"
                 >
                   <Form.Label column-lg>Email</Form.Label>
 
-                  <Form.Control type="email" onChange={handleChange} />
+                  <Form.Control
+                    className="form-style"
+                    name="email"
+                    type="email"
+                    onChange={handleChange}
+                    id="email"
+                    value={formState.email}
+                  />
                 </Form.Group>
 
                 <Form.Group
@@ -67,11 +73,18 @@ function Login() {
                 >
                   <Form.Label column-lg>Password</Form.Label>
 
-                  <Form.Control type="password" onChange={handleChange} />
+                  <Form.Control 
+                  className="form-style"
+                  name="password"
+                  type="password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                  />
                 </Form.Group>
 
                 <Form.Group className="text-center">
-                <Button variant="dark" className='submit-btn'>Submit</Button>
+                  <Button variant="dark" className='submit-btn'>Submit</Button>
                 </Form.Group>
               </Form>
 
