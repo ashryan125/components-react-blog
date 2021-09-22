@@ -18,7 +18,7 @@ function PostList({ posts }) {
                   <Link
                     to={`/profile/${post.username}`}
                     style={{ fontWeight: 700 }}
-                    className="text-light"
+                    className="text-dark"
                   >
                     {post.username}
                   </Link>{' '}
