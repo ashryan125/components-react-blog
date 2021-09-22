@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 function PostList({ posts }) {
 
-  if(!posts.length) {
-    return <h3>No Posts Yet</h3>
-  }
+  // if(!posts.length) {
+  //   return <h3>No Posts Yet</h3>
+  // }
 
   return (
       <div className='card mt-5'>
