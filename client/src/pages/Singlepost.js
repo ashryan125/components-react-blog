@@ -36,7 +36,7 @@ function SinglePost() {
             {post.CommentCount > 0 && <CommentList comments={post.comments} />}
             {Auth.loggedIn() && <CommentForm postId={post._id} />}
         </div>
-    )
-}
+    );
+};
 
 export default SinglePost;

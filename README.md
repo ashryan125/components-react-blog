@@ -41,6 +41,9 @@ A react blog site that allows users to create react component snippets that othe
 
 ## User Story
 ```
+AS an influencer and social media lover
+I WANT to join the COMPONENTS (social media app)
+SO THAT I can influence others with my posts as well as get influenced by others posts. 
 
 ```
   
