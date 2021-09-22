@@ -2,7 +2,7 @@ import React from "react";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { FOLLOW } from "../utils/mutations";
+import { ADD_FOLLOW } from "../utils/mutations";
 import Auth from "../utils/auth";
 import PostForm from "../components/PostForm";
 import FollowersList from '../components/FollowersList';
@@ -12,7 +12,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Profile() {
   const { username: userParam } = useParams();
-  const [follow] = useMutation(FOLLOW);
+  const [follow] = useMutation(ADD_FOLLOW);
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });

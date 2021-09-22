@@ -28,16 +28,36 @@ export const ADD_POST = gql`
   mutation addPost($postBody: String!) {
     addPost(postBody: $postBody) {
       _id
+      postTitle
       postBody
       createdAt
       username
+      commentCount
+      comments {
+        _id
+      }
     }
   }
 `;
 
-export const FOLLOW = gql`
-mutation follow($followId: ID!){
-    follow(followId: $followId) {
+export const ADD_COMMENT = gql `
+  mutation addComment($postId: ID!, $commentBody: String!) {
+    addComment(postId: $postId, commentBody: $commentBody) {
+      _id
+      commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_FOLLOW = gql`
+mutation addFollow($followId: ID!){
+    addFollow(followId: $followId) {
         _id
         username
         follow {
