@@ -6,16 +6,16 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    followers: [User]
-    following: [User]
+ 
     posts: [Post]
   }
 
   type Post {
     _id: ID
     postTitle: String
-    username: String
     postBody: String
+    createdAt: String
+    username: String
     commentCount: Int
     comments: [Comment]
   }
@@ -36,8 +36,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    followers(username: String): [User]
-    following(username: String): [User]
+    
     posts(username: String): [Post]
     post(_id: ID): Post
   }

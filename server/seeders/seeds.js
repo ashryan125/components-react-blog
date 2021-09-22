@@ -21,6 +21,28 @@ db.once('open', async () => {
     console.log('users seeded');
 
     const createdUsers = await User.collection.insertMany(userData);
+
+    // create Posts
+    let createdPosts = [];
+    for (let i = 0; i < 100; i += 1) {
+      const postTitle = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+      const postBody = faker.lorem.words(Math.round(Math.random() * 100) + 1);
+  
+      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+      const { username, _id: userId } = createdUsers.ops[randomUserIndex];
+  
+      const createdPost = await Post.create({ postTitle, postBody, username });
+  
+      const updatedUser = await User.updateOne(
+        { _id: userId },
+        { $push: { posts: createdPost._id } }
+      );
+  
+      createdPosts.push(createdPost);
+    }
+
+    console.log('posts seeded');
+  
   
     // UPDATED FOR FOLLOWERS!!!
     // create followers
@@ -57,27 +79,7 @@ db.once('open', async () => {
   
       console.log('following seeded')
   
-    // create Posts
-    let createdPosts = [];
-    for (let i = 0; i < 100; i += 1) {
-      const postTitle = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-      const postBody = faker.lorem.words(Math.round(Math.random() * 100) + 1);
-  
-      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-      const { username, _id: userId } = createdUsers.ops[randomUserIndex];
-  
-      const createdPost = await Post.create({ postTitle, postBody, username });
-  
-      const updatedUser = await User.updateOne(
-        { _id: userId },
-        { $push: { Posts: createdPost._id } }
-      );
-  
-      createdPosts.push(createdPost);
-    }
-
-    console.log('posts seeded');
-  
+    
     // create comments
     for (let i = 0; i < 100; i += 1) {
       const commentBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);

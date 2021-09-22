@@ -5,7 +5,13 @@ import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 import { Form, Row, Button } from "react-bootstrap";
 
 function PostForm() {
-  const [postText, setText] = useState('');
+
+  // const [postText, setText] = useState('');
+  const [formState, setFormState] = useState({
+    title: '',
+    body: ''
+  });
+
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -32,8 +38,15 @@ function PostForm() {
 
   const handleChange = event => {
     if (event.target.value.length <= 280) {
-      setText(event.target.value);
+      // setText(event.target.value);
       setCharacterCount(event.target.value.length);
+
+      const { name, value } = event.target
+
+      setFormState({
+        ...formState,
+        [name]: value
+      });
     }
   };
 
@@ -42,11 +55,11 @@ function PostForm() {
     try {
       // add thought to database
       await addPost({
-        variables: { postText }
+        variables: { ...formState }
       });
 
       // clear form value
-      setText('');
+      // setText('');
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -59,7 +72,7 @@ function PostForm() {
         Character Count: {characterCount}/280
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
-      <Form id='create-port'
+      <Form id='create-post'
         onSubmit={handleFormSubmit}
         className='form-style post-form-style'
       >
@@ -68,20 +81,34 @@ function PostForm() {
             Create a New Post
           </h4>
           <div className="card-body bg-secondary">
+          <Form.Group
+              as={Row}
+              className="mb-3 post-form-style mx-auto"
+            >
+              <Form.Control placeholder="Title of Post"
+                className='post-form-style'
+                type='title'
+                id='title'
+                value={formState.title}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
             <Form.Group
               as={Row}
               className="mb-3 post-form-style mx-auto"
-              controlId="formPlaintextPassword"
             >
               <Form.Control as='textarea' rows={3} placeholder="Put your post here..."
-                onChange={handleChange}
                 className='post-form-style'
+                type='body'
+                id='body'
+                value={formState.body}
+                onChange={handleChange}
               />
             </Form.Group>
 
             <Form.Group className="text-center">
-              <Button variant="dark" className='submit-btn'>Submit</Button>
+              <Button variant="dark" className='submit-btn' type='submit'>Submit</Button>
             </Form.Group>
             {error && <div>Login failed</div>}
           </div>
