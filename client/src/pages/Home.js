@@ -16,7 +16,7 @@ function Home() {
     const loggedIn = Auth.loggedIn();
     return (
         <main>
-            <div>
+            <div class='container-xxl'>
                 {loggedIn && (
                     <div className="col-12 mb-3">
                         <PostForm />
