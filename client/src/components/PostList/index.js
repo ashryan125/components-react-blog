@@ -26,10 +26,12 @@ function PostList({ posts }) {
                   posted on {post.createdAt}
                 </p>
                 <div className="card-body">
+
                   <Link to={`/post/${post._id}`}  style={{ textDecoration: 'none' }}>
                   <h4 className="card-header text-dark post">{post.postTitle}</h4>
                     <p className='text-dark post-text'>{post.postText}</p>
                     <p className="mb-0 post text-dark">
+
                       Comments: {post.commentCount} || Click to{' '}
                       {post.commentCount ? 'see' : 'start'} the discussion!
                     </p>
