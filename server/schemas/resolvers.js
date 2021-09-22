@@ -90,13 +90,13 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        follow: async (parent, { followId }, context) => {
+        addFollow: async (parent, { followId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
                     { new: true }
-                ).populate('following');
+                ).populate('followers');
 
                 return updatedUser;
             }
@@ -104,20 +104,13 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        following: async (parent, { userId }, context) => {
+        addFollowing: async (parent, { userId }, context) => {
             if (context.user) {
                 const currentUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
                     { new: true }
                 ).populate('following');
-
-                const currentUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { following: followId } },
-                    { new: true }
-                ).populate('following');
-
 
                 return updatedUser;
             }
