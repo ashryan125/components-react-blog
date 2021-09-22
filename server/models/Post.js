@@ -8,9 +8,9 @@ const postSchema = new Schema(
       type: String,
       required: 'Post needs title',
       minlength: 1,
-      maxlength: 280
+      maxlength:280
     },
-    postBody: {
+    postText: {
       type: String,
       required: 'Post needs text',
       minlength: 1,
