@@ -1,11 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-function FollowersList(){
-    return(
-        <div></div>
-=======
 
 function FollowersList({ followersCount, username, followers }) {
     if (!followers || !followers.length) {
@@ -23,7 +18,6 @@ function FollowersList({ followersCount, username, followers }) {
               </button>
             ))}     
         </div>
->>>>>>> 33bc223e55e07ed7d13cb4b6bbe18a3aeae342ec
     )
 }
 
