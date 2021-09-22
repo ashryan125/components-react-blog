@@ -9,6 +9,7 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
+<<<<<<< HEAD
     firstName: {
       type: String,
       required: true,
@@ -19,6 +20,8 @@ const userSchema = new Schema(
       required: true,
       trim: true
     },
+=======
+>>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
     email: {
       type: String,
       required: true,
@@ -71,14 +74,24 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
+<<<<<<< HEAD
 userSchema.virtual('followersCount').get(function() {
   return this.followers.length;
 });
 
+=======
+>>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
 userSchema.virtual('followingCount').get(function() {
   return this.following.length;
 });
 
+<<<<<<< HEAD
+=======
+userSchema.virtual('followersCount').get(function() {
+  return this.followers.length;
+});
+
+>>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
 const User = model('User', userSchema);
 
 module.exports = User;
