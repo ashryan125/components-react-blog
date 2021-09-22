@@ -65,17 +65,6 @@ const resolvers = {
         },
         addPost: async (parent, args, context) => {
             if (context.user) {
-<<<<<<< HEAD
-                const thought = await Thought.create({ ...args, username: context.user.username });
-
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $push: { thoughts: thought._id } },
-                    { new: true }
-                );
-
-                return thought;
-=======
                 const post = await Post.create({ ...args, username: context.user.username });
 
                 await User.findByIdAndUpdate(
@@ -85,14 +74,10 @@ const resolvers = {
                 );
 
                 return posts;
->>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
             }
 
             throw new AuthenticationError('You need to be logged in!');
         },
-<<<<<<< HEAD
-        follow: async (parent, { followId }, context) => {
-=======
         addComment: async (parent, { postId, commentBody }, context) => {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
@@ -106,37 +91,21 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         addFollow: async (parent, { followId }, context) => {
->>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
                     { new: true }
-<<<<<<< HEAD
-                ).populate('following');
-=======
                 ).populate('followers');
->>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
 
                 return updatedUser;
             }
 
             throw new AuthenticationError('You need to be logged in!');
         },
-<<<<<<< HEAD
-        following: async (parent, { userId }, context) => {
-            if (context.user) {
-                const currentUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { following: followId } },
-                    { new: true }
-                ).populate('following');
-
-=======
 
         addFollowing: async (parent, { userId }, context) => {
             if (context.user) {
->>>>>>> be0ba231971f7ecd1a80941a631d1fda57d63ba7
                 const currentUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
