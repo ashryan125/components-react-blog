@@ -16,6 +16,15 @@ const typeDefs = gql`
     postTitle: String
     username: String
     postBody: String
+    commentCount: Int
+    comments: [Comment]
+  }
+
+  type Comment {
+    _id: ID
+    commentBody: String
+    createAt: String
+    username: String
   }
 
   type Auth {
@@ -37,6 +46,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postBody: String!): Post
+    addComment(postId: ID!, commentBody: String!): Post
     follow(followId: ID!, username: String!): User
     following(followingId: ID!,currentUserId: ID!, username: String!): User
     deleteUser(userId: ID!): User
