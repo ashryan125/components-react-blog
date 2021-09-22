@@ -15,7 +15,7 @@ function Navigation() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        {/* {Auth.loggedIn() ? ( */}
+                        {Auth.loggedIn() ? (
                         <>
                             <Dropdown>
                                 <Dropdown.Toggle variant="secondary" id="dropdown-button-dark">
@@ -29,7 +29,6 @@ function Navigation() {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </>
-                    </Nav>
                     ) : (
                     <>
                         <Nav>
@@ -42,7 +41,8 @@ function Navigation() {
                             </Nav.Link>
                         </Nav>
                     </>
-                    {/* )} */}
+                   )}
+                   </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

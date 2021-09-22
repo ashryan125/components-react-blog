@@ -6,7 +6,6 @@ import { Form, Row, Button } from "react-bootstrap";
 
 function Signup() {
   const [formState, setFormState] = useState({
-    name: "",
     username: "",
     email: "",
     password: "",
@@ -26,7 +25,7 @@ function Signup() {
   // submit form (notice the async!)
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("button clicked!");
     // use try/catch instead of promises to handle errors
     try {
       // execute addUser mutation and pass in variable data from form
@@ -49,76 +48,53 @@ function Signup() {
               SIGNUP
             </h4>
             <div className="card-body bg-secondary">
-              <Form onSubmit={handleFormSubmit} className="form-style" id='signup-form'>
-
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="exampleForm.ControlTextarea1"
-                >
-                  <Form.Label column-lg>Name</Form.Label>
+              <Form
+                onSubmit={handleFormSubmit}
+                className="form-style"
+                id="signup-form"
+              >
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label>Username</Form.Label>
                   <Form.Control
                     className="form-style"
-                    name='name'
-                    type="name"
-                    onChange={handleChange}
-                    id="name"
-                    value={formState.name}
-                  />
-                </Form.Group>
-
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="exampleForm.ControlTextarea1"
-                >
-                  <Form.Label column-lg>Username</Form.Label>
-                  <Form.Control
-                    className="form-style"
+                    placeholder="Your username"
                     name="username"
                     type="username"
-                    onChange={handleChange}
                     id="username"
                     value={formState.username}
-                  />
-                </Form.Group>
-
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextEmail"
-                >
-                  <Form.Label column-lg>Email</Form.Label>
-                  <Form.Control
-                    className="form-style"
-                    name="email"
-                    type="email"
                     onChange={handleChange}
-                    id="email"
-                    value={formState.email}
                   />
                 </Form.Group>
 
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    className="form-style"
+                    placeholder='Your email'
+                    name='email'
+                    type='email'
+                    id='email'
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
 
-                <Form.Group
-                  as={Row}
-                  className="mb-3"
-                  controlId="formPlaintextPassword"
-                >
-                  <Form.Label column-lg>Password</Form.Label>
+                <Form.Group as={Row} className="mb-3">
+                  <Form.Label>Password</Form.Label>
 
                   <Form.Control
                     className="form-style"
-                    name="password"
-                    type="password"
-                    id="password"
+                    placeholder='******'
+                    name='password'
+                    type='password'
+                    id='password'
                     value={formState.password}
                     onChange={handleChange}
                   />
                 </Form.Group>
 
                 <Form.Group className="text-center">
-                  <Button variant="dark" className="submit-btn">
+                  <Button variant="dark" className="submit-btn" type="submit">
                     Submit
                   </Button>
                 </Form.Group>
@@ -130,7 +106,6 @@ function Signup() {
         </div>
       </div>
     </div>
-
   );
 }
 
