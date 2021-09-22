@@ -120,9 +120,33 @@ form {
   border:solid black 2px;
   width: 20vw;
 }
+
+.footer-style {
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.navlinks {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: white !important;
+}
+
+/* PROFILE STYLES */
+.profile-title {
+  font-family: 'Megrim', cursive;
+  font-size: 36px;
+  margin-left: 10px;
+}
+
+.post-form-style {
+  width: 100%;
 /* .followerbox {
   margin-bottom: 50px
 } */
+}
+
 .followerbox1 {
   margin-bottom: 93px
 }

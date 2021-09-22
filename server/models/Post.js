@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema(
@@ -9,11 +10,11 @@ const postSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
-    thoughtBody: {
+    postBody: {
       type: String,
       required: 'Post needs text',
       minlength: 1,
-      maxlength: 280
+      maxlength: 1000
     },
     createdAt: {
       type: Date,
@@ -23,7 +24,8 @@ const postSchema = new Schema(
     username: {
       type: String,
       required: true
-    }
+    },
+    comments: [commentSchema]
   },
   {
     toJSON: {
@@ -31,6 +33,10 @@ const postSchema = new Schema(
     }
   }
 );
+
+postSchema.virtual('commentCount').get(function() {
+  return this.comments.length;
+});
 
 const Post = model('Post', postSchema);
 
