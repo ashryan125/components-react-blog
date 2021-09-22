@@ -4,17 +4,11 @@ const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema(
   {
-    postTitle: {
-      type: String,
-      required: 'Post needs title',
-      minlength: 1,
-      maxlength: 280
-    },
-    postBody: {
+    postText: {
       type: String,
       required: 'Post needs text',
       minlength: 1,
-      maxlength: 1000
+      maxlength: 280
     },
     createdAt: {
       type: Date,
