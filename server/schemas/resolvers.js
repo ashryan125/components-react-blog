@@ -9,8 +9,8 @@ const resolvers = {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('posts')
-                    .populate('followers')
-                    .populate('following');
+                    // .populate('followers')
+                    // .populate('following');
 
                 return userData;
             }
@@ -21,15 +21,15 @@ const resolvers = {
             return User.find()
             .select('-__v -password')
             .populate('posts')
-            .populate('followers')
-            .populate('following');
+            // .populate('followers')
+            // .populate('following');
         },
         user: async (parent, { username }) => {
             return User.findOne({ username })
             .select('-__v -password')
             .populate('posts')
-            .populate('followers')
-            .populate('following');
+            // .populate('followers')
+            // .populate('following');
         },
         posts: async (parent, { username }) => {
             const params = username ? { username } : {};
@@ -65,33 +65,46 @@ const resolvers = {
         },
         addPost: async (parent, args, context) => {
             if (context.user) {
-                const thought = await Thought.create({ ...args, username: context.user.username });
+                const post = await Post.create({ ...args, username: context.user.username });
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { thoughts: thought._id } },
+                    { $push: { posts: post._id } },
                     { new: true }
                 );
 
-                return thought;
+                return post;
             }
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        follow: async (parent, { followId }, context) => {
+        addComment: async (parent, { postId, commentBody }, context) => {
+            if (context.user) {
+                const updatedPost = await Post.findOneAndUpdate(
+                    { _id: postId },
+                    { $push: { comments: { commentBody, username: context.user.username } } },
+                    { new: true, runValidators: true}
+                );
+
+                return updatedPost;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        addFollow: async (parent, { followId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
                     { new: true }
-                ).populate('following');
+                ).populate('followers');
 
                 return updatedUser;
             }
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        following: async (parent, { friendId }, context) => {
+
+        addFollowing: async (parent, { userId }, context) => {
             if (context.user) {
                 const currentUser = await User.findOneAndUpdate(
                     { _id: context.user._id },

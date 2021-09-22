@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -6,6 +8,7 @@ main {
 	margin: 0 auto;
 	max-width: 90%;
   padding: 50px 30px;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 body {
@@ -15,7 +18,7 @@ body {
   font-size: 18px;
   letter-spacing: .1em;
   background-color: black;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Rajdhani', sans-serif;
   color: white;
 }
 
@@ -32,9 +35,39 @@ h6 {
   color: var(--light);
 }
 
+.logo {
+  font-family: 'Megrim', cursive;
+  font-size: 4rem;
+}
+
+.title-fonts {
+  font-family: 'Megrim', cursive;
+}
+
+.backgroundColor,
+html {
+  background-color: #cacaca;
+  height: 100%;
+}
+
+/* FORM STYLES */
 form {
   width: 60%;
 }
+
+.form-style {
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.form-label {
+  margin-left: -12px;
+}
+
+.submit-btn {
+  width: 50%;
+}
+
 
 .btn {
 	border-radius: 5px;
@@ -76,13 +109,59 @@ form {
 }
 
 .followingbutton1{
- margin-left: 150px;
- margin-top: -600px;
 
+  margin-left: 14%;
+  float:left
 }
 
 .followingform{
+  height:250px;
   margin-left: 600px;
   border:solid black 2px;
   width: 20vw;
+}
+
+.footer-style {
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.navlinks {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: white !important;
+}
+
+/* PROFILE STYLES */
+.profile-title {
+  font-family: 'Megrim', cursive;
+  font-size: 36px;
+  margin-left: 10px;
+}
+
+.post-form-style {
+  width: 100%;
+/* .followerbox {
+  margin-bottom: 50px
+} */
+}
+
+.followerbox1 {
+  margin-bottom: 93px
+}
+.followerbox2 {
+  margin-bottom: 136px
+}
+.followerbox3 {
+  margin-bottom: 80px
+}
+
+.username {
+  margin:auto;
+  float:left
+}
+
+.post-text {
+  margin-top: 12px;
 }

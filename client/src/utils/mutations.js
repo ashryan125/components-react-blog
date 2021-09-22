@@ -13,8 +13,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($firstname: String! $lastname: String! $username: String!, $email: String!, $password: String!) {
-    addUser(firstname: $firstname lastname: $lastname username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -25,19 +25,39 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postBody: String!) {
-    addPost(postBody: $postBody) {
+  mutation addPost($postTitle: String!, $postText: String!) {
+    addPost(postTitle: $postTitle, postText: $postText) {
       _id
-      postBody
+      postText
+      postTitle
       createdAt
       username
+      commentCount
+      comments {
+        _id
+      }
     }
   }
 `;
 
-export const FOLLOW = gql`
-mutation follow($followId: ID!){
-    follow(followId: $followId) {
+export const ADD_COMMENT = gql `
+  mutation addComment($postId: ID!, $commentBody: String!) {
+    addComment(postId: $postId, commentBody: $commentBody) {
+      _id
+      commentCount
+      comments {
+        _id
+        commentBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_FOLLOW = gql`
+mutation addFollow($id: ID!){
+    addFollow(followId: $followId) {
         _id
         username
         follow {
@@ -72,12 +92,12 @@ mutation unfollow($unfollowId: ID!){
 `;
 
 export const DELETE_POST = gql`
-mutation deletePost($postBody: ID!){
-    deletePost(postBody: $postBody) {
+mutation deletePost($postText: ID!){
+    deletePost(postText: $postText) {
         _id
         username
         addPosts {
-            postId
+            _id
         }
     }
 }

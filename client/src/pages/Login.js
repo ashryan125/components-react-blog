@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
-import "../components/stylesheets/login.css";
-
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+import { Form, Row, Button } from "react-bootstrap";
 
 function Login() {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -22,10 +21,10 @@ function Login() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log('login button clicked!');
     try {
       const { data } = await login({
-        variables: { ...formState }
+        variables: { ...formState },
       });
 
       Auth.login(data.login.token);
@@ -35,42 +34,65 @@ function Login() {
 
     // clear form values
     setFormState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
   return (
-    <div>
-      <main className='flex-row justify-center mb-4'>
-        <div className='col-12 col-md-6'>
-          <div className='card'>
-            <h4 className='card-header'>Login</h4>
-            <div className='card-body'>
-              <form onSubmit={handleFormSubmit} className="login-form">
-                <div>
-                  <label for="email-login">Email: </label>
-                  <input type="text" id="email-login" class="text-color" value={formState.email}
-                onChange={handleChange}/>
-                </div>
-                <div>
-                  <label for="password-login">Password: </label>
-                  <input type="password" id="password-login" class="password" value={formState.password}
-                onChange={handleChange} />
-                </div>
-                <div>
-                  <button className='btn w-30' type='submit'>
-                    Submit
-                  </button>
-                </div>
-              </form>
+    <div className="backgroundColor">
+      <div className="d-flex justify-content-center">
+        <div className="col-12 col-md-6">
+          <div className="card mt-5">
+            <h4 className="card-header bg-dark text-white title-fonts">
+              LOGIN
+            </h4>
+            <div className="card-body bg-secondary">
+              <Form onSubmit={handleFormSubmit} className="form-style" id='login-form'>
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                >
+                  <Form.Label>Email</Form.Label>
+
+                  <Form.Control
+                    className="form-style"
+                    name="email"
+                    type="email"
+                    onChange={handleChange}
+                    id="email"
+                    value={formState.email}
+                  />
+                </Form.Group>
+
+                <Form.Group
+                  as={Row}
+                  className="mb-3"
+                >
+                  <Form.Label>Password</Form.Label>
+
+                  <Form.Control 
+                  className="form-style"
+                  name="password"
+                  type="password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group className="text-center">
+                  <Button variant="dark" className='submit-btn' type='submit'>Submit</Button>
+                </Form.Group>
+              </Form>
+
               {error && <div>Login failed</div>}
             </div>
           </div>
         </div>
-      </main >
-    </div >
+      </div>
+    </div>
   );
-};
+}
 
 export default Login;

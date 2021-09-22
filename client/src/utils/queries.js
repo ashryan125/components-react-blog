@@ -6,13 +6,23 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      followingCount
+      followersCount
       posts {
-        _postId
-        postBody
+        _id
+        postText
+        postTitle
         createdAt
+        commentCount
+        comments {
+          _id
+          createdAt
+          commentBody
+          username
+        }
       }
-      follow {
-          _followId
+      followers {
+          _followersId
           username
        }
       following {
@@ -29,14 +39,22 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      follow {
-        _followId
+      followingCount
+      followersCount
+      following {
+        _followingId
+        username
+      }
+      followers {
+        _followersId
         username
       }
       posts {
-        _postId
-        postbody
+        _id
+        postText
+        postTitle
         createdAt
+        commentCount
       }
     }
   }
@@ -45,21 +63,37 @@ export const QUERY_USER = gql`
 export const QUERY_POSTS = gql`
 query posts($username: String) {
   posts(username: $username) {
-      _postId
-      postBody
+      _id
+      postText
+      postTitle
       createdAt
       username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentBody
+      }
     }
   }
 `;
 
 export const QUERY_POST = gql`
-  query post($postId: ID!) {
-    post(_postId: $postId) {
-      _postId
-      postBody
+  query post($id: ID!) {
+    post(_id: $id) {
+      _id
+      postText
+      postTitle
       createdAt
       username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentBody
+      }
     }
   }
 `;

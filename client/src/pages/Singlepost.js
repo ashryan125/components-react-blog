@@ -24,10 +24,10 @@ function SinglePost() {
         <div>
             <div className="card mb-3">
                 <p className="card-header">
-                    <span style={{ fontWeight: 700 }} className="text-light">
+                    <span style={{ fontWeight: 700 }} className="text-dark post">
                         {post.username}
                     </span>{' '}
-                    post on {post.createdAt}
+                    posted on {post.createdAt}
                 </p>
                 <div className="card-body">
                     <p>{post.postText}</p>
@@ -36,7 +36,7 @@ function SinglePost() {
             {post.CommentCount > 0 && <CommentList comments={post.comments} />}
             {Auth.loggedIn() && <CommentForm postId={post._id} />}
         </div>
-    )
-}
+    );
+};
 
 export default SinglePost;
