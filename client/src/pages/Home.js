@@ -3,14 +3,14 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
 import PostList from '../components/PostList';
 import Auth from '../utils/auth';
-// import FollowersList from '../components/FollowersList';
-// import FollowingList from '../components/FollowingList';
+import FollowersList from '../components/FollowersList';
+import FollowingList from '../components/FollowingList';
 import PostForm from '../components/PostForm';
 
 
 function Home() {
     const { loading, data } = useQuery(QUERY_POSTS);
-    // const { data: userData } = useQuery(QUERY_ME);
+    const { data: userData } = useQuery(QUERY_ME);
     const posts = data?.posts || [];
     console.log(posts);
     const loggedIn = Auth.loggedIn();
@@ -29,15 +29,20 @@ function Home() {
                         <PostList posts={posts} title="Some Feed for Post(s)..." />
                     )}
                 </div>
-                {/* {loggedIn && userData ? (
+                {loggedIn && userData ? (
                     <div className="col-12 col-lg-3 mb-3">
-                        <FriendList
+                        <FollowersList
                             username={userData.me.username}
-                            friendCount={userData.me.friendCount}
-                            friends={userData.me.friends}
+                            followersCount={userData.me.followCount}
+                            followers={userData.me.follow}
+                        />
+                        <FollowingList
+                            username={userData.me.username}
+                            followingCount={userData.me.followCount}
+                            following={userData.me.follow}
                         />
                     </div>
-                ) : null} */}
+                ) : null}
             </div>
         </main >
     );
