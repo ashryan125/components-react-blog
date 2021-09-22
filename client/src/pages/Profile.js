@@ -5,9 +5,10 @@ import { useQuery, useMutation } from "@apollo/client";
 import { ADD_FOLLOW } from "../utils/mutations";
 import Auth from "../utils/auth";
 import PostForm from "../components/PostForm";
-// import FollowersList from '../components/FollowersList';
+import FollowersList from '../components/FollowersList';
+import FollowingList from '../components/FollowingList';
 import PostList from "../components/PostList";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Profile() {
   const { username: userParam } = useParams();
@@ -43,12 +44,9 @@ function Profile() {
         <Container>
           <Row>
             <Col md={9}>
-                <div className="bg-dark text-white p-2">    <h3 className="profile-title">
+              <div className="bg-dark text-white p-2">    <h3 className="profile-title">
                 {userParam ? `${user.username}'s` : "My"} Profile
               </h3></div>
-          
-
-              <p>Life is beautiful, if you look at it properly</p>
 
               {!userParam && <PostForm />}
 
@@ -61,33 +59,22 @@ function Profile() {
             <Col md={3}>
               <aside>
                 {/* Need to create a list of followers and following ppl by user */}
-                {/* <div className="col-12 col-lg-3 mb-3">
-                                <FollowersList
-                                    username={user.username}
-                                    followersCount={user.followCount}
-                                    followers={user.follow}
-                                />
-                            </div> */}
-                {/* <div className="col-12 col-lg-3 mb-3">
-                                <FollowingList
-                                    username={user.username}
-                                    followingCount={user.followCount}
-                                    following={user.follow}
-                                />
-                            </div> */}
                 <div className="card-body">
-                  {/* Need to make the 20 followers and 19 following clickable to reach the follwers and following list */}
-                  <h4 className="title-fonts">
-             <strong> Followers </strong>
-            </h4>
-                  <p>20 followers</p>
-                  <p>19 following</p>
-
                   {userParam && (
-                    <button className="btn ml-auto" onClick={handleClick}>
-                      Followers/Following
+                    <button className="btn ml-auto title-fonts" onClick={handleClick}>
+                      FOLLOWERS
                     </button>
                   )}
+                  <FollowersList
+                    username={user.username}
+                    followersCount={user.followCount}
+                    followers={user.follow}
+                  />
+                  <FollowingList
+                    username={user.username}
+                    followingCount={user.followCount}
+                    following={user.follow}
+                  />
                 </div>
               </aside>
             </Col>

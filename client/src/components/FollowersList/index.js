@@ -1,32 +1,23 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
-const divStyle = {
-    marginBottom:'50px'
-}
 
-function FollowersList(){
-    return(
-        <div className="followingform">
-        <h2>
-            Followers
-        </h2>
-        <div style={divStyle} >
-            <h5 className="username">John Doe</h5>
-            <button className='followingbutton1' > Remove</button>
+function FollowersList({ followersCount, username, followers }) {
+    if (!followers || !followers.length) {
+        return <p className="bg-dark text-light p-3 title-fonts">{username} Followers </p>;
+    }
+
+    return (
+        <div>
+            <h4>
+                {username}'s {followersCount} {followersCount === 1 ? 'follow' : 'followers'}
+            </h4>
+            {followers.map(follow => (
+                <button className="btn w-100 display-block mb-2" key={follow._id}>
+                <Link to={`/profile/${follow.username}`}>{follow.username}</Link>
+              </button>
+            ))}     
         </div>
-        <div className='followerbox1' >
-            <h5 className='username'>John Doe</h5>
-            <button className='followingbutton1' >Remove</button>
-        </div >
-        <div className='followerbox2' >
-            <h5 className="username">John Doe</h5>
-            <button className='followingbutton1' >Remove</button>
-        </div>
-        <div className='followerbox3' >
-            <h5 className="username">John Doe</h5>
-            <button className='followingbutton1' >Remove</button>
-        </div >
-    </div>
     )
 }
 

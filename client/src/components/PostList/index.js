@@ -2,15 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function PostList({ posts, title }) {
-  // if (!posts.length) {
-  //   return <h3>No Posts Yet</h3>;
-  // }
 
   return (
-    <div className='container-xxl'>
-      <div className='card'>
-        <h4>{title}</h4>
-        <div className='card-body'>
+      <div className='card mt-5'>
+        <h4 className="card-header bg-dark text-white title-fonts">{title}</h4>
+        <div className='card-body bg-secondary'>
           {posts &&
             posts.map(post => (
               <div key={post._id} className="card mb-3">
@@ -37,7 +33,6 @@ function PostList({ posts, title }) {
             ))}
         </div>
       </div>
-    </div>
   );
 };
 
