@@ -11,9 +11,8 @@ import PostForm from '../components/PostForm';
 function Home() {
     const { loading, data } = useQuery(QUERY_POSTS);
     const { data: userData } = useQuery(QUERY_ME);
-    console.log(data);
     const posts = data?.posts || [];
-    console.log(posts);
+    
     const loggedIn = Auth.loggedIn();
     return (
         <main>
@@ -23,7 +22,7 @@ function Home() {
                         <PostForm />
                     </div>
                 )}
-                <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
+                <div className={`col-12 mb-3 ${loggedIn }`}>
                     {loading ? (
                         <div>Loading...</div>
                     ) : (

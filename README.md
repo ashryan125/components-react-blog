@@ -39,10 +39,9 @@ A react blog site that allows users to create react component snippets that othe
 
 ## User Story
 ```
-AS a developer, 
-I WANT to create the COMPONENTS (tech blog), 
-SO THAT the components users can have the ability to post blog on different React snippets that others can use in their own projects and comment on each other’s posts.
-
+AS an influencer and social media lover
+I WANT to join the COMPONENTS (social media app)
+SO THAT I can influence others with my posts as well as get influenced by others posts. 
 ```
 ---
   
@@ -75,7 +74,6 @@ Have a high-quality README (with unique name, description, technologies used, sc
 ---
 ## Screenshots
 ### Home Page View
-
 ![Screenshot](./screenshots/Screenshot.png)
 
 ---
@@ -87,3 +85,4 @@ Have a high-quality README (with unique name, description, technologies used, sc
 - [Rohan Nair](https://github.com/rohannj1993)
 
 ---
+

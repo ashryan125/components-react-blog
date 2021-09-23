@@ -14,7 +14,7 @@ const postSchema = new Schema(
       type: String,
       required: 'Post needs text',
       minlength: 1,
-      maxlength: 280
+      maxlength: 1000
     },
     createdAt: {
       type: Date,

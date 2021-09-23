@@ -6,7 +6,6 @@ import { Form, Row, Button } from "react-bootstrap";
 
 function Signup() {
   const [formState, setFormState] = useState({
-    name: "",
     username: "",
     email: "",
     password: "",
