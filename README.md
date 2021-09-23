@@ -1,14 +1,12 @@
 # COMPONENTS - A React Component Blog
 
 ## Description
-A react blog site that allows users to create react component snippets that other users can use in their own projects, comment, and add followers
+A react blog site that allows users to create react component snippets that other users can use in their own projects, comments on the posts, and add follow eachother. 
 
 ---
 
 ## Deployed Site
-[Components](#)
-
----
+[Components](https://component-react.herokuapp.com/)
 
 ---
 
@@ -41,11 +39,12 @@ A react blog site that allows users to create react component snippets that othe
 
 ## User Story
 ```
-AS an influencer and social media lover
-I WANT to join the COMPONENTS (social media app)
-SO THAT I can influence others with my posts as well as get influenced by others posts. 
+AS a developer, 
+I WANT to create the COMPONENTS (tech blog), 
+SO THAT the components users can have the ability to post blog on different React snippets that others can use in their own projects and comment on each other’s posts.
 
 ```
+---
   
 ## Acceptance Criteria
 ```
@@ -76,11 +75,15 @@ Have a high-quality README (with unique name, description, technologies used, sc
 ---
 ## Screenshots
 ### Home Page View
-![Homepage](#)
+
+![Screenshot](./screenshots/Screenshot.png)
 
 ---
 ## Contact
+#### Made with love and care 
 - [Ashley Ryan](https://github.com/ashryan125)
 - [Reuben Genkin](https://github.com/ReubenGenkin)
 - [Sonika Poudyal](https://github.com/sonipoud)
 - [Rohan Nair](https://github.com/rohannj1993)
+
+---
