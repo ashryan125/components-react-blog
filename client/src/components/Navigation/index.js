@@ -5,6 +5,7 @@ import Auth from '../../utils/auth';
 import { IoPersonCircle } from 'react-icons/io5';
 
 
+
 function Navigation() {
     return (
         <Navbar bg='dark' variant='dark' expand='lg'>
@@ -24,6 +25,7 @@ function Navigation() {
                                     style={{ backgroundColor: 'transparent', border: '0 solid transparent' }} 
                                     id="dropdown-button-dark">
                                         <IoPersonCircle style={{ fontSize: '48px', backgroundColor: 'transparent' }} />
+
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#/home">Home</Dropdown.Item>

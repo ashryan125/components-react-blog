@@ -11,7 +11,6 @@ import PostForm from '../components/PostForm';
 function Home() {
     const { loading, data } = useQuery(QUERY_POSTS);
     const { data: userData } = useQuery(QUERY_ME);
-    
     const posts = data?.posts || [];
     
     const loggedIn = Auth.loggedIn();

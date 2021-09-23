@@ -59,6 +59,7 @@ function Profile() {
             <Col md={3}>
               <aside>
                 {/* Need to create a list of followers and following ppl by user */}
+
                 <div className="card-body" style={{padding: 0}}>
                   {userParam && (
                     <button className="btn ml-auto title-fonts" onClick={handleClick}>
