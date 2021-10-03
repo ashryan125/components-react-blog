@@ -9,8 +9,8 @@ const resolvers = {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('posts')
-                    // .populate('followers')
-                    // .populate('following');
+                    .populate('followers')
+                    .populate('following');
 
                 return userData;
             }
@@ -21,15 +21,15 @@ const resolvers = {
             return User.find()
             .select('-__v -password')
             .populate('posts')
-            // .populate('followers')
-            // .populate('following');
+            .populate('followers')
+            .populate('following');
         },
         user: async (parent, { username }) => {
             return User.findOne({ username })
             .select('-__v -password')
             .populate('posts')
-            // .populate('followers')
-            // .populate('following');
+            .populate('followers')
+            .populate('following');
         },
         posts: async (parent, { username }) => {
             const params = username ? { username } : {};
@@ -95,20 +95,7 @@ const resolvers = {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { following: followId } },
-                    { new: true }
-                ).populate('followers');
-
-                return updatedUser;
-            }
-
-            throw new AuthenticationError('You need to be logged in!');
-        },
-
-        addFollowing: async (parent, { userId }, context) => {
-            if (context.user) {
-                const currentUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { following: followId } },
+                    { $addToSet: {} },
                     { new: true }
                 ).populate('following');
 
@@ -117,6 +104,20 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         }
+
+        // addFollowing: async (parent, { userId }, context) => {
+        //     if (context.user) {
+        //         const currentUser = await User.findOneAndUpdate(
+        //             { _id: context.user._id },
+        //             { $addToSet: { following: followId } },
+        //             { new: true }
+        //         ).populate('following');
+
+        //         return updatedUser;
+        //     }
+
+        //     throw new AuthenticationError('You need to be logged in!');
+        // }
     }
 };
 

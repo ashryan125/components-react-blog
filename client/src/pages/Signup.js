@@ -40,10 +40,10 @@ function Signup() {
   };
 
   return (
-    <div className="backgroundColor">
+    <div className="backgroundColor mb-5">
       <div className="d-flex justify-content-center">
         <div className="col-12 col-md-6">
-          <div className="card mt-5">
+          <div className="card mt-5 border-0">
             <h4 className="card-header bg-dark text-white title-fonts">
               SIGNUP
             </h4>

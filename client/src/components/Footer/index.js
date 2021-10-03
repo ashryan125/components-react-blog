@@ -1,10 +1,10 @@
 import React from 'react';
-import "./style.css";
-function Footer() {
+
+const Footer = () => {
     return (
-        <div className="footer-style bg-dark text-white footer">
-            <p>Thanks for visiting this page!</p>
-        </div>
+        <footer className="w-100 mt-auto bg-dark p-4 text-white footer-location">
+            <div className='footer-style'>&copy;2021 by Components Dev Team</div>
+        </footer>
     )
 }
 

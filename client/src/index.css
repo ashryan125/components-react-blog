@@ -6,8 +6,6 @@
 
 main {
 	margin: 0 auto;
-	max-width: 90%;
-  padding: 50px 30px;
   font-family: 'Rajdhani', sans-serif;
 }
 
@@ -47,7 +45,7 @@ h6 {
 .backgroundColor,
 html {
   background-color: #cacaca;
-  height: 100%;
+  /* height: 100vh; */
 }
 
 /* FORM STYLES */
@@ -164,4 +162,19 @@ form {
 
 .post-text {
   margin-top: 12px;
+}
+
+/* sticky footer - bottom of viewport */
+.min-100-vh {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-container {
+  padding-bottom: 4.5rem;
+}
+
+.footer-location {
+  position: absolute;
+  bottom: 0;
 }

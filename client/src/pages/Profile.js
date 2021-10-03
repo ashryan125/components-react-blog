@@ -13,29 +13,12 @@ import { Container, Row, Col } from "react-bootstrap";
 const Profile = () => {
   const { username: userParam } = useParams();
   const [follow] = useMutation(ADD_FOLLOW);
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+
+  const { loading, data } = useQuery(QUERY_USER, {
     variables: { username: userParam },
   });
 
   const user = data?.me || data?.user || {};
-
-  // redirect to personal profile page if username is the logged-in user's
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Redirect to="/profile" />;
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user?.username) {
-    return (
-      <h4>
-        You need to be logged in to see this page. Use the navigation links
-        above to sign up or log in!
-      </h4>
-    );
-  }
 
   const handleClick = async () => {
     try {
@@ -46,6 +29,26 @@ const Profile = () => {
       console.error(e);
     }
   };
+
+  // redirect to personal profile page if username is the logged-in user's
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Redirect to="/profile" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // if (!user?.username) {
+  //   return (
+  //     <div className="container-xxl mt-4">
+  //       <h4>
+  //         You need to be logged in to see this page. Use the navigation links
+  //         above to sign up or log in!
+  //       </h4>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="container-xxl">
@@ -76,10 +79,10 @@ const Profile = () => {
                       className="btn ml-auto title-fonts"
                       onClick={handleClick}
                     >
-                      FOLLOWERS
+                      Follow
                     </button>
                   )}
-                  <FollowersList
+                  {/* <FollowersList
                     username={user.me.username}
                     followersCount={user.me.followersCount}
                     followers={user.me.followers}
@@ -88,7 +91,7 @@ const Profile = () => {
                     username={user.me.username}
                     followingCount={user.me.followingCount}
                     following={user.me.following}
-                  />
+                  /> */}
                 </div>
               </aside>
             </Col>

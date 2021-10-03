@@ -8,7 +8,7 @@ import FollowingList from '../components/FollowingList';
 import PostForm from '../components/PostForm';
 
 
-function Home() {
+const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
     const { data: userData } = useQuery(QUERY_ME_BASIC);
     
@@ -16,14 +16,14 @@ function Home() {
     
     const loggedIn = Auth.loggedIn();
     return (
-        <main>
-            <div className='container-xxl'>
+        <main className='container-xxl'>
+            <div>
                 {loggedIn && (
                     <div className="col-12 mb-3">
                         <PostForm />
                     </div>
                 )}
-                <div className={`col-12 mb-3 ${loggedIn }`}>
+                <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
                     {loading ? (
                         <div>Loading...</div>
                     ) : (

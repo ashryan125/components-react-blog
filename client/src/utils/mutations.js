@@ -57,11 +57,12 @@ export const ADD_COMMENT = gql `
 
 export const ADD_FOLLOW = gql`
 mutation addFollow($id: ID!){
-    addFollow(followId: $followId) {
+    addFollow(followId: $followersId) {
         _id
         username
-        follow {
-            _id
+        followersCount
+        followers {
+            _followersId
             username
         }
     }

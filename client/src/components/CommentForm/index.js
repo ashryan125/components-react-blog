@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 
-function CommentForm() {
+const CommentForm = ({ postId }) => {
     const [commentBody, setBody] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [addComment, {error}] = useMutation(ADD_COMMENT);

@@ -1,4 +1,8 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
+
+// need to update Users following to new table Follows: https://hasura.io/blog/instagram-clone-react-graphql-hasura-part1/
+
+// https://github.com/abhi40308/instagram-clone/blob/master/src/components/Follow.js
 
 const typeDefs = gql`
   type User {
@@ -7,7 +11,7 @@ const typeDefs = gql`
     email: String
     password: String
     followersCount: Int
-    followingCount:Int
+    followingCount: Int
     followers: [User]
     following: [User]
     posts: [Post]
@@ -50,8 +54,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postTitle: String!, postText: String!): Post
     addComment(postId: ID!, commentBody: String!): Post
-    addFollow(followId: ID!, username: String!): User
-    addFollowing(followingId: ID!,currentUserId: ID!, username: String!): User
+    addFollow(followId: ID!): User
     deleteUser(userId: ID!): User
     unfollow(userId: ID!): User
     deletePost(postId: ID!): User

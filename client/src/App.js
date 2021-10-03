@@ -39,38 +39,24 @@ function App() {
   });
 
   return (
-    <div className="backgroundColor">
-      <ApolloProvider client={client}>
-        <Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="backgroundColor min-100-vh">
           <Navigation />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/profile/:username?" component={Profile} />
-            <Route exact path="/post/:id" component={SinglePost} />
-           
-
-            <Route component={NoMatch} />
-          </Switch>
-          <div>
-            <Footer />
+          <div className="page-container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/post/:id" component={SinglePost} />
+              <Route component={NoMatch} />
+            </Switch>
           </div>
-        </Router>
-      </ApolloProvider>
-    </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
