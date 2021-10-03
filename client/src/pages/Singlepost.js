@@ -23,14 +23,14 @@ function SinglePost() {
     return (
         <div className='container-xxl'>
             <div className="card mt-3 mb-3">
-                <p className="card-header">
-                    <span style={{ fontWeight: 700 }} className="text-dark post">
+                <p className="card-header bg-secondary text-white-50">
+                    <span style={{ fontWeight: 700 }} className="text-white post">
                         {post.username}
                     </span>{' '}
                     posted on {post.createdAt}
                 </p>
                 <div className="card-body">
-                    <p>{post.postText}</p>
+                    <p className='post-text'>{post.postText}</p>
                 </div>
             </div>
             {post.commentCount > 0 && <CommentList comments={post.comments} />}

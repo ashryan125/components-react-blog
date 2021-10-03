@@ -78,6 +78,7 @@ function PostForm() {
           <h4 className="card-header bg-dark text-white title-fonts">
             Create a New Post
           </h4>
+
           <div className="card-body bg-secondary">
           <Form.Group
               as={Row}
@@ -92,8 +93,7 @@ function PostForm() {
                 onChange={handleChange}
               />
             </Form.Group>
-
-          <div className="card-body bg-secondary">
+      
             <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
               Character Count: {characterCount}/280
               {error && <span className="ml-2">Something went wrong...</span>}
@@ -117,7 +117,8 @@ function PostForm() {
             </Form.Group>
             {error && <div>Post failed</div>}
           </div>
-          </div>
+
+
         </div>
       </Form>
     </div>

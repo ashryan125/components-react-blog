@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 
+
 const CommentForm = ({ postId }) => {
     const [commentBody, setBody] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -29,7 +30,7 @@ const CommentForm = ({ postId }) => {
         }
     };
     return (
-        <div>
+        <div clsssName='comment-form-spacing'>
             <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
                 Character Count: {characterCount}/280
                 {error && <span className="ml-2">Something went wrong...</span>}
@@ -43,7 +44,7 @@ const CommentForm = ({ postId }) => {
                     onChange={handleChange}
                 ></textarea>
 
-                <button className="btn col-12 col-md-3" type="submit">
+                <button className="btn bg-secondary text-white col-12 col-md-3 mb-4" type="submit">
                     Submit
                 </button>
             </form>

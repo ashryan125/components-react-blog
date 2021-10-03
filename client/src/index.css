@@ -178,3 +178,33 @@ form {
   position: absolute;
   bottom: 0;
 }
+
+/* COMMENT STYLES */
+.comment-background {
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px 10px 10px;
+  padding: 2%;
+  font-size: 1.25rem;
+}
+
+.comment-poster {
+  font-size: .95rem;
+  text-decoration: none;
+  color: black;
+}
+
+/* SINGLE POST STYLES */
+.post-text {
+  font-size: 1.25rem;;
+}
+
+/* COMMENT FORM STYLES */
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+}

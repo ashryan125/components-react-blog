@@ -21,14 +21,6 @@ export const QUERY_ME = gql`
           username
         }
       }
-      followers {
-          _followersId
-          username
-       }
-      following {
-          _followingId
-          username
-      }
     }
 }
 `;
@@ -39,16 +31,6 @@ export const QUERY_ME_BASIC = gql `
     _id
     username
     email
-    followingCount
-    followersCount
-    followers {
-      _followersId
-      username
-    }
-    following {
-      _followingId
-      username
-    }
   }
 }
 `;
@@ -59,16 +41,6 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      followingCount
-      followersCount
-      following {
-        _followingId
-        username
-      }
-      followers {
-        _followersId
-        username
-      }
       posts {
         _id
         postText

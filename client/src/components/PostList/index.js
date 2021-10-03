@@ -10,7 +10,7 @@ const PostList = ({ posts, title }) => {
   return (
       <div className='card mt-5 border-0'>
         <div
-        className='card-body backgroundColor'
+        className='backgroundColor'
         >
           <h3 className='mb-3'>{title}</h3>
           {posts &&
