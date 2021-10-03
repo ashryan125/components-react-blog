@@ -20,16 +20,17 @@ const PostList = ({ posts, title }) => {
                 <p className="card-header">
                   <Link
                     to={`/profile/${post.username}`}
+
                     style={{ fontWeight: 700, textDecoration: 'none' }}
                   
                     className="text-dark post"
+
                   >
                     {post.username}
                   </Link>{' '}
                   posted on {post.createdAt}
                 </p>
                 <div className="card-body">
-
                   <Link to={`/post/${post._id}`}  style={{ textDecoration: 'none' }}>
                   <h4 className="card-header text-dark post">{post.postTitle}</h4>
                     <p className='text-dark post-text'>{post.postText}</p>

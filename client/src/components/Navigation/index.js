@@ -4,6 +4,7 @@ import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import { IoPersonCircle } from "react-icons/io5";
 
+
 function Navigation() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">

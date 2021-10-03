@@ -6,7 +6,7 @@ import { ADD_COMMENT } from '../../utils/mutations';
 const CommentForm = ({ postId }) => {
     const [commentBody, setBody] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
-    const [addComment, {error}] = useMutation(ADD_COMMENT);
+    const [addComment, { error }] = useMutation(ADD_COMMENT);
 
     const handleChange = event => {
         if (event.target.value.length <= 280) {

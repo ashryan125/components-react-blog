@@ -8,7 +8,6 @@ import PostForm from '../components/PostForm';
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
-
     const posts = data?.posts || [];
     
     const loggedIn = Auth.loggedIn();
