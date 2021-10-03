@@ -29,7 +29,7 @@ function Navigation() {
                                         <Dropdown.Item href="#/home">Home</Dropdown.Item>
                                         <Dropdown.Item href="#/profile">My Profile</Dropdown.Item>
                                         <Dropdown.Divider />
-                                        <Dropdown.Item onClick={Auth.signout}>Signout</Dropdown.Item>
+                                        <Dropdown.Item onClick={Auth.signout}>Logout</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                                 </Nav>

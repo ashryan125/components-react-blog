@@ -33,7 +33,7 @@ function SinglePost() {
                     <p>{post.postText}</p>
                 </div>
             </div>
-            {post.CommentCount > 0 && <CommentList comments={post.comments} />}
+            {post.commentCount > 0 && <CommentList comments={post.comments} />}
             {Auth.loggedIn() && <CommentForm postId={post._id} />}
         </div>
     );

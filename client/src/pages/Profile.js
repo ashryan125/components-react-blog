@@ -5,12 +5,12 @@ import { useQuery, useMutation } from "@apollo/client";
 import { ADD_FOLLOW } from "../utils/mutations";
 import Auth from "../utils/auth";
 import PostForm from "../components/PostForm";
-import FollowersList from '../components/FollowersList';
-import FollowingList from '../components/FollowingList';
+import FollowersList from "../components/FollowersList";
+import FollowingList from "../components/FollowingList";
 import PostList from "../components/PostList";
 import { Container, Row, Col } from "react-bootstrap";
 
-function Profile() {
+const Profile = () => {
   const { username: userParam } = useParams();
   const [follow] = useMutation(ADD_FOLLOW);
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -26,6 +26,15 @@ function Profile() {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!user?.username) {
+    return (
+      <h4>
+        You need to be logged in to see this page. Use the navigation links
+        above to sign up or log in!
+      </h4>
+    );
   }
 
   const handleClick = async () => {
@@ -44,9 +53,11 @@ function Profile() {
         <Container>
           <Row>
             <Col md={9}>
-              <div className="bg-dark text-white p-2">    <h3 className="profile-title">
-                {userParam ? `${user.username}'s` : "My"} Profile
-              </h3></div>
+              <div className="bg-dark text-white p-2">
+                <h3 className="profile-title">
+                  {userParam ? `${user.username}'s` : "My"} Profile
+                </h3>
+              </div>
 
               {!userParam && <PostForm />}
 
@@ -59,21 +70,24 @@ function Profile() {
             <Col md={3}>
               <aside>
                 {/* Need to create a list of followers and following ppl by user */}
-                <div className="card-body" style={{padding: 0}}>
+                <div className="card-body" style={{ padding: 0 }}>
                   {userParam && (
-                    <button className="btn ml-auto title-fonts" onClick={handleClick}>
+                    <button
+                      className="btn ml-auto title-fonts"
+                      onClick={handleClick}
+                    >
                       FOLLOWERS
                     </button>
                   )}
                   <FollowersList
-                    username={user.username}
-                    followersCount={user.followCount}
-                    followers={user.follow}
+                    username={user.me.username}
+                    followersCount={user.me.followersCount}
+                    followers={user.me.followers}
                   />
                   <FollowingList
-                    username={user.username}
-                    followingCount={user.followCount}
-                    following={user.follow}
+                    username={user.me.username}
+                    followingCount={user.me.followingCount}
+                    following={user.me.following}
                   />
                 </div>
               </aside>
@@ -83,6 +97,6 @@ function Profile() {
       </div>
     </div>
   );
-}
+};
 
 export default Profile;

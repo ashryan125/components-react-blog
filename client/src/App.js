@@ -12,6 +12,8 @@ import { setContext } from "@apollo/client/link/context";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
+import NoMatch from "./pages/NoMatch";
+import SinglePost from "./pages/Singlepost";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -57,6 +59,11 @@ function App() {
             <Route path="/profile">
               <Profile />
             </Route>
+            <Route exact path="/profile/:username?" component={Profile} />
+            <Route exact path="/post/:id" component={SinglePost} />
+           
+
+            <Route component={NoMatch} />
           </Switch>
           <div>
             <Footer />

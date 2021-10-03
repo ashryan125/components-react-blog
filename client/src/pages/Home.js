@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
+import { QUERY_POSTS, QUERY_ME_BASIC } from '../utils/queries';
 import PostList from '../components/PostList';
 import Auth from '../utils/auth';
 import FollowersList from '../components/FollowersList';
@@ -10,7 +10,7 @@ import PostForm from '../components/PostForm';
 
 function Home() {
     const { loading, data } = useQuery(QUERY_POSTS);
-    const { data: userData } = useQuery(QUERY_ME);
+    const { data: userData } = useQuery(QUERY_ME_BASIC);
     
     const posts = data?.posts || [];
     
@@ -34,13 +34,13 @@ function Home() {
                     <div className="col-12 col-lg-3 mb-3">
                         <FollowersList
                             username={userData.me.username}
-                            followersCount={userData.me.followCount}
-                            followers={userData.me.follow}
+                            followersCount={userData.me.followersCount}
+                            followers={userData.me.followers}
                         />
                         <FollowingList
                             username={userData.me.username}
-                            followingCount={userData.me.followCount}
-                            following={userData.me.follow}
+                            followingCount={userData.me.followingCount}
+                            following={userData.me.following}
                         />
                     </div>
                 ) : null}
