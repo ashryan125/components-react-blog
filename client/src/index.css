@@ -17,7 +17,11 @@ body {
   letter-spacing: .1em;
   background-color: black;
   font-family: 'Rajdhani', sans-serif;
-  color: white;
+  color: black;
+}
+
+p {
+  color: black;
 }
 
 h1,
@@ -30,7 +34,6 @@ h6 {
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
-  color: var(--light);
 }
 
 .logo {
