@@ -46,40 +46,40 @@ db.once('open', async () => {
     console.log('posts seeded');
   
   
-    // UPDATED FOR FOLLOWERS!!!
-    // create followers
-    for (let i = 0; i < 100; i += 1) {
-      const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-      const { _id: userId } = createdUsers.ops[randomUserIndex];
+    // // UPDATED FOR FOLLOWERS!!!
+    // // create followers
+    // for (let i = 0; i < 100; i += 1) {
+    //   const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    //   const { _id: userId } = createdUsers.ops[randomUserIndex];
   
-      let followerId = userId;
+    //   let followerId = userId;
   
-      while (followerId === userId) {
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-        followerId = createdUsers.ops[randomUserIndex];
-      }
+    //   while (followerId === userId) {
+    //     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    //     followerId = createdUsers.ops[randomUserIndex];
+    //   }
   
-      await User.updateOne({ _id: userId }, { $addToSet: { followers: followerId } });
-    }
+    //   await User.updateOne({ _id: userId }, { $addToSet: { followers: followerId } });
+    // }
 
-    console.log('followers seeded')
+    // console.log('followers seeded')
 
-       // create following
-       for (let i = 0; i < 100; i += 1) {
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-        const { _id: userId } = createdUsers.ops[randomUserIndex];
+    //    // create following
+    //    for (let i = 0; i < 100; i += 1) {
+    //     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    //     const { _id: userId } = createdUsers.ops[randomUserIndex];
     
-        let followingId = userId;
+    //     let followingId = userId;
     
-        while (followingId === userId) {
-          const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-          followingId = createdUsers.ops[randomUserIndex];
-        }
+    //     while (followingId === userId) {
+    //       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    //       followingId = createdUsers.ops[randomUserIndex];
+    //     }
     
-        await User.updateOne({ _id: userId }, { $addToSet: { following: followingId } });
-      }
+    //     await User.updateOne({ _id: userId }, { $addToSet: { following: followingId } });
+    //   }
   
-      console.log('following seeded')
+    //   console.log('following seeded')
   
     
     // create comments

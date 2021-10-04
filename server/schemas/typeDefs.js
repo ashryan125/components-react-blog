@@ -10,10 +10,6 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    followersCount: Int
-    followingCount: Int
-    followers: [User]
-    following: [User]
     posts: [Post]
   }
 
@@ -43,8 +39,6 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    followers(username: String!): [User]
-    following(username: String!): [User]
     posts(username: String): [Post]
     post(_id: ID): Post
   }
@@ -54,9 +48,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postTitle: String!, postText: String!): Post
     addComment(postId: ID!, commentBody: String!): Post
-    addFollow(followId: ID!): User
     deleteUser(userId: ID!): User
-    unfollow(userId: ID!): User
     deletePost(postId: ID!): User
   }
 `;

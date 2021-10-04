@@ -26,18 +26,6 @@ const userSchema = new Schema(
         ref: 'Post'
       }
     ],
-    followers: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ],
-    following: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ]
   },
   {
     toJSON: {
@@ -61,13 +49,13 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('followingCount').get(function() {
-  return this.following.length;
-});
+// userSchema.virtual('followingCount').get(function() {
+//   return this.following.length;
+// });
 
-userSchema.virtual('followersCount').get(function() {
-  return this.followers.length;
-});
+// userSchema.virtual('followersCount').get(function() {
+//   return this.followers.length;
+// });
 
 const User = model('User', userSchema);
 

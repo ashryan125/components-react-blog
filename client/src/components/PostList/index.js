@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 const PostList = ({ posts, title }) => {
 
   if(!posts.length) {
-    return <h3>No Posts Yet</h3>
+    return (
+      <div className='mt-4 comment-background'>
+        <h3>No Posts Yet</h3>
+      </div>
+    
+    )
   }
 
   return (

@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from "../../utils/mutations";
+import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 import { Form, Row, Button } from "react-bootstrap";
 
 function PostForm() {
 
-  // const [postText, setText] = useState('');
   const [formState, setFormState] = useState({
-    title: '',
-    text: ''
+    postTitle: "",
+    postText: "",
   });
+
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -21,7 +21,7 @@ function PostForm() {
         const { posts } = cache.readQuery({ query: QUERY_POSTS });
         cache.writeQuery({
           query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] }
+          data: { posts: [addPost, ...posts] },
         });
       } catch (e) {
         console.error(e);
@@ -31,35 +31,36 @@ function PostForm() {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } }
+        data: { me: { ...me, posts: [...me.posts, addPost] } },
       });
-    }
+    },
   });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     if (event.target.value.length <= 280) {
       // setText(event.target.value);
       setCharacterCount(event.target.value.length);
 
-      const { name, value } = event.target
+      const { name, value } = event.target;
 
       setFormState({
         ...formState,
-        [name]: value
+        [name]: value,
       });
     }
   };
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       // add thought to database
-      await addPost({
-        variables: { ...formState }
+      addPost({
+        variables: { ...formState },
       });
 
       // clear form value
-      // setText('');
+  
+    
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -68,61 +69,62 @@ function PostForm() {
 
   return (
     <div>
-      
-      <Form id='create-post'
+      <Form
+        id="create-post"
         onSubmit={handleFormSubmit}
-        className='form-style post-form-style'
+        className="form-style post-form-style"
       >
-
-        <div className="card mt-5">
+        <div className="card mt-5 border-0">
           <h4 className="card-header bg-dark text-white title-fonts">
             Create a New Post
           </h4>
 
           <div className="card-body bg-secondary">
-          <Form.Group
-              as={Row}
-              className="mb-3 post-form-style mx-auto"
-            >
-              <Form.Control placeholder="Title of Post"
-                className='post-form-style'
-                name='title'
-                type='title'
-                id='title'
-                value={formState.title}
+            <Form.Group as={Row} className="mb-3 post-form-style mx-auto">
+              <Form.Control
+                placeholder="Title of Post"
+                className="post-form-style"
+                name="postTitle"
+                type="postTitle"
+                id="postTitle"
+                value={formState.postTitle}
                 onChange={handleChange}
               />
             </Form.Group>
-      
-            <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
+
+            <p
+              className={`m-0 ${
+                characterCount === 280 || error ? "text-error" : ""
+              }`}
+            >
               Character Count: {characterCount}/280
               {error && <span className="ml-2">Something went wrong...</span>}
             </p>
-            <Form.Group
-              as={Row}
-              className="mb-3 post-form-style mx-auto"
-            >
-              <Form.Control as='textarea' rows={3} placeholder="Put your post here..."
-                className='post-form-style'
-                type='text'
-                id='text'
-                name='text'
-                value={formState.text}
+            <Form.Group as={Row} className="mb-3 post-form-style mx-auto">
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Put your post here..."
+                className="post-form-style"
+                type="postText"
+                id="postText"
+                name="postText"
+                value={formState.postText}
                 onChange={handleChange}
               />
             </Form.Group>
 
             <Form.Group className="text-center">
-              <Button variant="dark" className='submit-btn' type='submit'>Submit</Button>
+              <Button variant="dark" className="submit-btn" type="submit">
+                Submit
+              </Button>
             </Form.Group>
             {error && <div>Post failed</div>}
           </div>
-
-
         </div>
       </Form>
     </div>
-  )
+  );
 }
 
 export default PostForm;

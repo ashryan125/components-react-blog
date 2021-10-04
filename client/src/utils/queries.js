@@ -6,8 +6,6 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      followingCount
-      followersCount
       posts {
         _id
         postText

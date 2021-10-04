@@ -22,7 +22,7 @@ function SinglePost() {
 
     return (
         <div className='container-xxl'>
-            <div className="card mt-3 mb-3">
+            <div className="card mt-3 mb-3 border-0">
                 <p className="card-header bg-secondary text-white-50">
                     <span style={{ fontWeight: 700 }} className="text-white post">
                         {post.username}

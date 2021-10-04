@@ -65,7 +65,7 @@ const Profile = () => {
 
               <PostList
                 posts={user.posts}
-                title={`${user.username}'s posts...'`}
+                title={`${user.username}'s posts...`}
               />
             </Col>
 
